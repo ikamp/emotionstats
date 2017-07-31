@@ -13,7 +13,7 @@ class CreateMoodReasonTable extends Migration
      */
     public function up()
     {
-        Schema::create('mood_reason', function (Blueprint $table) {
+        Schema::create('moodreason', function (Blueprint $table) {
             $table->increments("id");
             $table->integer("employee_id");
             $table->integer("mood_id");
@@ -32,6 +32,6 @@ class CreateMoodReasonTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('moodreason');
     }
 }
