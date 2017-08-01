@@ -1,0 +1,30 @@
+body {
+	font-family: 'Ubuntu', sans-serif;
+}
+body a {
+	font-family: 'Ubuntu-Light-Italic', sans-serif;
+}
+body .panel-body {
+	font-family: 'Ubuntu-Regular', sans-serif;
+}
+
+.header {
+	background-color: #ab0012;
+    height: 80px;
+    margin: 50px 0px;
+    padding: 25px;
+}
+.logo {
+	position: absolute;
+	top: 0;
+}
+.btn.btn-search {
+	background: linear-gradient(to bottom, #fec13d 0%, #fd9a2c 100%);
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+input.search {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
