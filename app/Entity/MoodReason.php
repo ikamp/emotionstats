@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Entity;
+
 class MoodReason
 {
     protected $id;
