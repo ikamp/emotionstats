@@ -5,50 +5,50 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <style>
-        @media only screen and (max-width: 600px) {
-            .inner-body {
-                width: 100% !important;
-            }
-
-            .footer {
-                width: 100% !important;
-            }
+<style>
+    @media only screen and (max-width: 600px) {
+        .inner-body {
+            width: 100% !important;
         }
 
-        @media only screen and (max-width: 500px) {
-            .button {
-                width: 100% !important;
-            }
+        .footer {
+            width: 100% !important;
         }
-    </style>
+    }
 
-    <table class="wrapper" width="100%" cellpadding="0" cellspacing="0">
-        <tr>
-            <td align="center">
-                <table class="content" width="100%" cellpadding="0" cellspacing="0">
-                    {{ $header or '' }}
+    @media only screen and (max-width: 500px) {
+        .button {
+            width: 100% !important;
+        }
+    }
+</style>
 
-                    <!-- Email Body -->
-                    <tr>
-                        <td class="body" width="100%" cellpadding="0" cellspacing="0">
-                            <table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0">
-                                <!-- Body content -->
-                                <tr>
-                                    <td class="content-cell">
-                                        {{ Illuminate\Mail\Markdown::parse($slot) }}
+<table class="wrapper" width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+        <td align="center">
+            <table class="content" width="100%" cellpadding="0" cellspacing="0">
+            {{ $header or '' }}
 
-                                        {{ $subcopy or '' }}
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+            <!-- Email Body -->
+                <tr>
+                    <td class="body" width="100%" cellpadding="0" cellspacing="0">
+                        <table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0">
+                            <!-- Body content -->
+                            <tr>
+                                <td class="content-cell">
+                                    {{ Illuminate\Mail\Markdown::parse($slot) }}
 
-                    {{ $footer or '' }}
-                </table>
-            </td>
-        </tr>
-    </table>
+                                    {{ $subcopy or '' }}
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                {{ $footer or '' }}
+            </table>
+        </td>
+    </tr>
+</table>
 </body>
 </html>
