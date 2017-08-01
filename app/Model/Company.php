@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     protected $table = 'company';
-    public $timestamps = false;
+    public $timestamps = true;
 
-    public function department()
+    public function departments()
     {
         return $this->hasMany('App\Model\Department', 'company_id', 'id');
     }

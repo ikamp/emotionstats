@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     protected $table = 'department';
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function company()
     {
         return $this->belongsTo('App\Model\Company', 'company_id', 'id');
     }
 
-    public function employee()
+    public function employees()
     {
         return $this->hasMany('App\Model\Employee', 'department_id', 'id');
     }

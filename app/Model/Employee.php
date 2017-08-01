@@ -8,19 +8,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Employee extends Authenticatable
 {
     protected $table = 'employee';
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function department()
     {
-        $this->belongsTo('App\Model\Department', 'department_id', 'id');
+        $this->hasOne('App\Model\Department', 'department_id', 'id');
     }
 
-    public function mood()
+    public function moods()
     {
         $this->hasMany('App\Model\Mood', 'employee_id', 'id');
     }
-
-
 
     use Notifiable;
 

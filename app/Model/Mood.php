@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Mood extends Model
 {
     protected $table = 'mood';
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function employee()
     {
         $this->belongsTo('App\Model\Employee', 'employee_id', 'id');
     }
 
-
+    public function company()
+    {
+        $this->hasOne('App\Model\Company', 'company_id', 'id');
+    }
 }
