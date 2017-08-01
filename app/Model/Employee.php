@@ -1,12 +1,27 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Employee extends Authenticatable
 {
+    protected $table = 'employee';
+    public $timestamps = false;
+
+    public function department()
+    {
+        $this->belongsTo('App\Model\Department', 'department_id', 'id');
+    }
+
+    public function mood()
+    {
+        $this->hasMany('App\Model\Mood', 'employee_id', 'id');
+    }
+
+
+
     use Notifiable;
 
     /**
