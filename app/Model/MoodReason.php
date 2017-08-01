@@ -9,13 +9,8 @@ class MoodReason extends Model
     protected $table = 'moodreason';
     public $timestamps = true;
 
-    public function employees()
+    public function mood()
     {
-        return $this->hasMany('App\Model\Employee', 'employee_id', id);
-    }
-
-    public function moods()
-    {
-        return $this->hasMany('App\Model\Mood', 'mood_id', id);
+        return $this->belongsTo('App\Model\Mood', 'mood_id', 'id');
     }
 }
