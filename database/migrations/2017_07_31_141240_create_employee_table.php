@@ -20,8 +20,8 @@ class CreateEmployeeTable extends Migration
             $table->string("password");
             $table->string("role");
             $table->string("status");
-            $table->integer("department_id");
-            $table->integer("company_id");
+            $table->integer("department_id")->nullable();
+            $table->integer("company_id")->nullable();
             $table->rememberToken();
             $table->timestamps();
 
