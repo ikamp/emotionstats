@@ -2,9 +2,7 @@
 
 namespace App\Model;
 
-use Illuminate\Database\Eloquent\Model;
-
-class MoodReason extends Model
+class MoodReason extends BaseModel
 {
     protected $table = 'moodreason';
     public $timestamps = true;
