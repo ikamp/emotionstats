@@ -15,13 +15,11 @@ class CreateMoodReasonTable extends Migration
     {
         Schema::create('moodreason', function (Blueprint $table) {
             $table->increments("id");
-            $table->integer("employee_id");
             $table->integer("mood_id");
             $table->string("reason");
             $table->timestamps();
 
             $table->foreign("mood_id")->references("id")->on("mood");
-            $table->foreign("employee_id")->references("id")->on("employee");
         });
     }
 

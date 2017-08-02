@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use App\Manager\DepartmentManager;
+use App\Manager\EmployeeManager;
+
 class EmployeeEntity
 {
     protected $id;
@@ -142,6 +145,16 @@ class EmployeeEntity
     }
 
     public function getDepartment()
+    {
+
+    }
+
+    public function getCompany()
+    {
+
+    }
+
+    public function getMoods()
     {
 
     }

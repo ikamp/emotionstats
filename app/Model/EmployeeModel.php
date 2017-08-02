@@ -10,14 +10,19 @@ class EmployeeModel extends Authenticatable
     protected $table = 'employee';
     public $timestamps = true;
 
+    public function company()
+    {
+        return $this->belongsTo('App\Model\CompanyModel', 'company_id', 'id');
+    }
+
     public function department()
     {
-        $this->hasOne('App\Model\DepartmentModel', 'department_id', 'id');
+        return $this->hasOne('App\Model\DepartmentModel', 'id', 'department_id');
     }
 
     public function moods()
     {
-        $this->hasMany('App\Model\MoodModel', 'employee_id', 'id');
+        return $this->hasMany('App\Model\MoodModel', 'employee_id', 'id');
     }
 
     use Notifiable;
@@ -28,7 +33,7 @@ class EmployeeModel extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role', 'status'
+        'name', 'email', 'password', 'role', 'status', 'company_id', 'department_id'
     ];
 
     /**
