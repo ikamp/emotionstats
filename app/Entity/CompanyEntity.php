@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-class Company
+class CompanyEntity
 {
     protected $id;
     protected $name;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Model\Employee;
+use App\Model\EmployeeModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -58,11 +58,11 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array $data
-     * @return \App\Model\Employee
+     * @return \App\Model\EmployeeModel
      */
     protected function create(array $data)
     {
-        return Employee::create([
+        return EmployeeModel::create([
             'name' => $data['name'],
             'role' => 'manager',
             'status' => 'active',

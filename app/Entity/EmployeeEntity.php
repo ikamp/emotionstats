@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-class Employee
+class EmployeeEntity
 {
     protected $id;
     protected $name;
@@ -139,5 +139,10 @@ class Employee
     public function setCompanyId($company_id)
     {
         $this->company_id = $company_id;
+    }
+
+    public function getDepartment()
+    {
+
     }
 }
