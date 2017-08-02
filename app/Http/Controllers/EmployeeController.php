@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\EmployeeModel;
+use App\Manager\CompanyManager;
+use App\Manager\EmployeeManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,18 +22,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $employee = EmployeeManager::getById(Auth::id());
+        $companyEmployees = CompanyManager::getByIdEmployees($employee->company_id);
+        return response()->json($companyEmployees);
     }
 
     /**
@@ -54,7 +46,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = EmployeeManager::getByIdWithFull($id);
+        return response()->json($employee);
     }
 
     /**
