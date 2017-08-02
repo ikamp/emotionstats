@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-class Mood
+class MoodEntity
 {
     protected $id;
     protected $company_id;

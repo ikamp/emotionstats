@@ -2,13 +2,13 @@
 
 namespace App\Model;
 
-class Company extends BaseModel
+class CompanyModel extends BaseModel
 {
     protected $table = 'company';
     public $timestamps = true;
 
     public function departments()
     {
-        return $this->hasMany('App\Model\Department', 'company_id', 'id');
+        return $this->hasMany('App\Model\DepartmentModel', 'company_id', 'id');
     }
 }

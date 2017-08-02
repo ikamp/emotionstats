@@ -2,7 +2,7 @@
 
 namespace App\Manager;
 
-class MoodReason
+class DepartmentManager
 {
 
 }

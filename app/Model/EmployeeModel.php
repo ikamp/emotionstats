@@ -5,19 +5,19 @@ namespace App\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Employee extends Authenticatable
+class EmployeeModel extends Authenticatable
 {
     protected $table = 'employee';
     public $timestamps = true;
 
     public function department()
     {
-        $this->hasOne('App\Model\Department', 'department_id', 'id');
+        $this->hasOne('App\Model\DepartmentModel', 'department_id', 'id');
     }
 
     public function moods()
     {
-        $this->hasMany('App\Model\Mood', 'employee_id', 'id');
+        $this->hasMany('App\Model\MoodModel', 'employee_id', 'id');
     }
 
     use Notifiable;
@@ -28,7 +28,7 @@ class Employee extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role', 'status'
+        'name', 'email', 'password', 'role', 'status'
     ];
 
     /**

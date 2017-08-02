@@ -2,7 +2,7 @@
 
 namespace App\Manager;
 
-class Company
+class EmployeeManager
 {
 
 }
