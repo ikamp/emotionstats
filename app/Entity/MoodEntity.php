@@ -5,8 +5,8 @@ namespace App\Entity;
 class MoodEntity
 {
     protected $id;
-    protected $company_id;
-    protected $employee_id;
+    protected $companyId;
+    protected $employeeId;
     protected $mood;
     protected $status;
     protected $description;
@@ -32,15 +32,15 @@ class MoodEntity
      */
     public function getCompanyId()
     {
-        return $this->company_id;
+        return $this->companyId;
     }
 
     /**
-     * @param mixed $company_id
+     * @param mixed $companyId
      */
-    public function setCompanyId($company_id)
+    public function setCompanyId($companyId)
     {
-        $this->company_id = $company_id;
+        $this->companyId = $companyId;
     }
 
     /**
@@ -48,15 +48,15 @@ class MoodEntity
      */
     public function getEmployeeId()
     {
-        return $this->employee_id;
+        return $this->employeeId;
     }
 
     /**
-     * @param mixed $employee_id
+     * @param mixed $employeeId
      */
-    public function setEmployeeId($employee_id)
+    public function setEmployeeId($employeeId)
     {
-        $this->employee_id = $employee_id;
+        $this->employeeId = $employeeId;
     }
 
     /**
