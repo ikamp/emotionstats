@@ -2,7 +2,12 @@
 
 namespace App\Mail;
 
-use App\Model\UserActivation;
+use App\Entity\EmployeeEntity;
+use App\Manager\EmployeeManager;
+use App\Model\EmployeeModel;
+use App\Entity\UserActivationEntity;
+use App\Manager\UserActivationManager;
+use App\Model\UserActivationModel;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -23,12 +28,8 @@ class verification extends Mailable
 
     public function __construct()
     {
-        $userToken = UserActivation::with("employee")
-            ->where("employee_id", Auth::id())
-            ->get();
-        //dd($userToken[0]['token']);
-        //die(response()->json($this->$userToken));
-        $this->token = $userToken[0]['token'];
+        $userToken = UserActivationManager::getByIdWithToken(Auth::id());
+        $this->token = $userToken;
     }
     /**
      * Build the message.

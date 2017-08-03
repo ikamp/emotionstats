@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -65,7 +65,7 @@ class RegisterController extends Controller
         return EmployeeModel::create([
             'name' => $data['name'],
             'role' => 'manager',
-            'status' => 'active',
+            'status' => 'waiting',
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);

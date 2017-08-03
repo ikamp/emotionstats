@@ -66,7 +66,6 @@ class UserActivationEntity
         $this->token = $token;
     }
 
-
     /**
      * @return mixed
      */
