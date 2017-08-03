@@ -25,6 +25,11 @@ class EmployeeModel extends Authenticatable
         return $this->hasMany('App\Model\MoodModel', 'employee_id', 'id');
     }
 
+    public function token()
+    {
+        return $this->hasOne('App\Model\UserActivation', 'employee_id', 'id');
+    }
+
     use Notifiable;
 
     /**
