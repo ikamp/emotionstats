@@ -13,12 +13,14 @@
 
 $apiRoute = "/api/";
 
-Route::get("/", function () {
+Route::get($apiRoute, function () {
     return view('welcome');
 });
 
 Route::group(['middleware' => 'auth'], function () use ($apiRoute) {
     Route::get($apiRoute . 'home', 'HomeController@index')->name('home');
+    Route::resource($apiRoute . 'mood', 'MoodController');
+
 });
 
 Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
@@ -26,8 +28,5 @@ Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
 });
 
 Auth::routes();
-
-Route::get('/logout', 'HomeController@logout');
-Route::get('/index', 'HomeController@index');
 
 
