@@ -3,5 +3,5 @@ angular.module('emeotionStatsApp')
 
 
 function homeController() {
-    
+
 }
