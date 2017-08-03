@@ -11,12 +11,16 @@
 |
 */
 
-Route::get('/', function () {
+$apiRoute = "/api/";
+
+Route::get($apiRoute, function () {
     return view('index');
+});
+
+Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
+    Route::resource($apiRoute . 'employee', 'EmployeeController');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('employee', 'EmployeeController')->middleware('auth');
+Route::get($apiRoute . 'home', 'HomeController@index')->name('home');

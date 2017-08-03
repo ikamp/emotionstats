@@ -35,7 +35,11 @@ class EmployeeManager
     public static function setStatusById($id, $status)
     {
         return EmployeeModel::find($id)->update(['status' => $status]);
+    }
 
+    public static function setDepartmentById($id, $department_id)
+    {
+        return EmployeeModel::find($id)->update(['department_id' => $department_id]);
     }
 
     public static function getByIdWithFull($id)

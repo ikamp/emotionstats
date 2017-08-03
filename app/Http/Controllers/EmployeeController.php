@@ -57,6 +57,7 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
+        return EmployeeManager::setDepartmentById($id, 1);
         $employee = EmployeeManager::getByIdWithFull($id);
 
         return response()->json($employee);
@@ -72,5 +73,12 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         return EmployeeManager::setStatusById($id, EmployeeEntity::OFF);
+    }
+
+    public function changeDepartment(Request $request) {
+        $id = $request->employee['id'];
+        $department_id = $request->employee['department_id'];
+
+        return EmployeeManager::setDepartmentById($id, $department_id);
     }
 }
