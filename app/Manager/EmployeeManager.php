@@ -32,6 +32,12 @@ class EmployeeManager
         return EmployeeModel::with('moods')->find($id);
     }
 
+    public static function setStatusById($id, $status)
+    {
+        return EmployeeModel::find($id)->update(['status' => $status]);
+
+    }
+
     public static function getByIdWithFull($id)
     {
         $employeeInfo = EmployeeModel::with('company', 'department', 'moods')->find($id);
@@ -57,7 +63,8 @@ class EmployeeManager
                 'employeeId' => $employee->getId(),
                 'employeeName' => $employee->getName(),
                 'employeeEmail' => $employee->getEmail(),
-                'departmentName' => $employee->getDepartmentName()
+                'departmentName' => $employee->getDepartmentName(),
+                'companyName' => $employee->getCompanyName()
             ];
         }
 

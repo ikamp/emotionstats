@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Manager\CompanyManager;
+use App\Entity\EmployeeEntity;
 use App\Manager\EmployeeManager;
+use App\Model\EmployeeModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
 class EmployeeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Display a listing of the resource.
@@ -23,7 +20,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $employee = EmployeeManager::getById(Auth::id());
-        $companyEmployees = CompanyManager::getListEmployeeById($employee->company_id);
+        $companyEmployees = EmployeeManager::getAllEmployeeByCompanyId($employee->company_id);
 
         return response()->json($companyEmployees);
     }
@@ -36,7 +33,20 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $authEmployee = Auth::user();
+
+        $newEmployee = EmployeeModel::create([
+            'name' => $request->employee['name'],
+            'email' => $request->employee['email'],
+            'department_id' => $request->employee['department_id'],
+            'company_id' => $authEmployee->attributes['company_id'],
+            'role' => EmployeeEntity::EMPLOYEE,
+            'status' => EmployeeEntity::WAITING
+        ]);
+
+        //email gönderilecek > activate mail
+
+        return response()->json($newEmployee);
     }
 
     /**
@@ -52,28 +62,6 @@ class EmployeeController extends Controller
         return response()->json($employee);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -83,6 +71,6 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return EmployeeManager::setStatusById($id, EmployeeEntity::OFF);
     }
 }

@@ -4,6 +4,13 @@ namespace App\Entity;
 
 class EmployeeEntity
 {
+    const WAITING = 'waiting';
+    const OFF = 'off';
+    const ACTIVE = 'active';
+
+    const EMPLOYEE = 'employee';
+    const MANAGER = 'manager';
+
     protected $id;
     protected $name;
     protected $email;
