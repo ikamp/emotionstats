@@ -44,7 +44,7 @@ class EmployeeController extends Controller
             'status' => EmployeeEntity::WAITING
         ]);
 
-        //email gönderilecek > activate mail
+        //activation email
 
         return response()->json($newEmployee);
     }
@@ -57,7 +57,6 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        return EmployeeManager::setDepartmentById($id, 1);
         $employee = EmployeeManager::getByIdWithFull($id);
 
         return response()->json($employee);

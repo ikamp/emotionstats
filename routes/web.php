@@ -14,7 +14,11 @@
 $apiRoute = "/api/";
 
 Route::get($apiRoute, function () {
-    return view('index');
+    return view('welcome');
+});
+
+Route::group(['middleware' => 'auth'], function () use ($apiRoute) {
+    Route::get($apiRoute . 'home', 'HomeController@index')->name('home');
 });
 
 Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
@@ -23,4 +27,3 @@ Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
 
 Auth::routes();
 
-Route::get($apiRoute . 'home', 'HomeController@index')->name('home');
