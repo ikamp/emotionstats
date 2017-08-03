@@ -19,6 +19,8 @@ Route::get($apiRoute, function () {
 
 Route::group(['middleware' => 'auth'], function () use ($apiRoute) {
     Route::get($apiRoute . 'home', 'HomeController@index')->name('home');
+    Route::resource($apiRoute . 'mood', 'MoodController');
+
 });
 
 Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
