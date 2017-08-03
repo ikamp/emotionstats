@@ -17,7 +17,7 @@ class CreateEmployeeTable extends Migration
             $table->increments("id");
             $table->string("name");
             $table->string("email")->unique();
-            $table->string("password");
+            $table->string("password")->nullable();
             $table->string("role");
             $table->string("status");
             $table->integer("department_id")->nullable();

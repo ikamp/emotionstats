@@ -11,9 +11,4 @@ class CompanyManager
     {
         return CompanyModel::find($id);
     }
-
-    public static function getListEmployeeById($id)
-    {
-        return EmployeeManager::getAllEmployeeByCompanyId($id);
-    }
 }
