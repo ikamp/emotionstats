@@ -6,7 +6,7 @@ class DepartmentEntity
 {
     protected $id;
     protected $name;
-    protected $company_id;
+    protected $companyId;
 
     /**
      * @return mixed
@@ -45,14 +45,14 @@ class DepartmentEntity
      */
     public function getCompanyId()
     {
-        return $this->company_id;
+        return $this->companyId;
     }
 
     /**
-     * @param mixed $company_id
+     * @param mixed $companyId
      */
-    public function setCompanyId($company_id)
+    public function setCompanyId($companyId)
     {
-        $this->company_id = $company_id;
+        $this->companyId = $companyId;
     }
 }

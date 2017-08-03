@@ -23,7 +23,8 @@ class EmployeeController extends Controller
     public function index()
     {
         $employee = EmployeeManager::getById(Auth::id());
-        $companyEmployees = CompanyManager::getByIdEmployees($employee->company_id);
+        $companyEmployees = CompanyManager::getListEmployeeById($employee->company_id);
+
         return response()->json($companyEmployees);
     }
 
@@ -47,6 +48,7 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $employee = EmployeeManager::getByIdWithFull($id);
+
         return response()->json($employee);
     }
 

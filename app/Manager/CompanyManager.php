@@ -3,6 +3,7 @@
 namespace App\Manager;
 
 use App\Model\CompanyModel;
+use App\Model\EmployeeModel;
 
 class CompanyManager
 {
@@ -11,8 +12,8 @@ class CompanyManager
         return CompanyModel::find($id);
     }
 
-    public static function getByIdEmployees($id)
+    public static function getListEmployeeById($id)
     {
-        return CompanyModel::with('employees')->find($id);
+        return EmployeeManager::getAllEmployeeByCompanyId($id);
     }
 }

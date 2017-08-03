@@ -5,8 +5,7 @@ namespace App\Entity;
 class MoodReasonEntity
 {
     protected $id;
-    protected $employee_id;
-    protected $mood_id;
+    protected $moodId;
     protected $reason;
 
     /**
@@ -28,33 +27,17 @@ class MoodReasonEntity
     /**
      * @return mixed
      */
-    public function getEmployeeId()
-    {
-        return $this->employee_id;
-    }
-
-    /**
-     * @param mixed $employee_id
-     */
-    public function setEmployeeId($employee_id)
-    {
-        $this->employee_id = $employee_id;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getMoodId()
     {
-        return $this->mood_id;
+        return $this->moodId;
     }
 
     /**
-     * @param mixed $mood_id
+     * @param mixed $moodId
      */
-    public function setMoodId($mood_id)
+    public function setMoodId($moodId)
     {
-        $this->mood_id = $mood_id;
+        $this->moodId = $moodId;
     }
 
     /**

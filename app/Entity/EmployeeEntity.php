@@ -2,9 +2,6 @@
 
 namespace App\Entity;
 
-use App\Manager\DepartmentManager;
-use App\Manager\EmployeeManager;
-
 class EmployeeEntity
 {
     protected $id;
@@ -13,8 +10,11 @@ class EmployeeEntity
     protected $password;
     protected $role;
     protected $status;
-    protected $department_id;
-    protected $company_id;
+    protected $departmentId;
+    protected $companyId;
+    protected $companyName;
+    protected $departmentName;
+    protected $moods;
 
     /**
      * @return mixed
@@ -117,15 +117,15 @@ class EmployeeEntity
      */
     public function getDepartmentId()
     {
-        return $this->department_id;
+        return $this->departmentId;
     }
 
     /**
-     * @param mixed $department_id
+     * @param mixed $departmentId
      */
-    public function setDepartmentId($department_id)
+    public function setDepartmentId($departmentId)
     {
-        $this->department_id = $department_id;
+        $this->departmentId = $departmentId;
     }
 
     /**
@@ -133,29 +133,62 @@ class EmployeeEntity
      */
     public function getCompanyId()
     {
-        return $this->company_id;
+        return $this->companyId;
     }
 
     /**
-     * @param mixed $company_id
+     * @param mixed $companyId
      */
-    public function setCompanyId($company_id)
+    public function setCompanyId($companyId)
     {
-        $this->company_id = $company_id;
+        $this->companyId = $companyId;
     }
 
-    public function getDepartment()
+    /**
+     * @return mixed
+     */
+    public function getCompanyName()
     {
-
+        return $this->companyName;
     }
 
-    public function getCompany()
+    /**
+     * @param mixed $companyName
+     */
+    public function setCompanyName($companyName)
     {
-
+        $this->companyName = $companyName;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDepartmentName()
+    {
+        return $this->departmentName;
+    }
+
+    /**
+     * @param mixed $departmentName
+     */
+    public function setDepartmentName($departmentName)
+    {
+        $this->departmentName = $departmentName;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getMoods()
     {
+        return $this->moods;
+    }
 
+    /**
+     * @param mixed $moods
+     */
+    public function setMoods($moods)
+    {
+        $this->moods = $moods;
     }
 }
