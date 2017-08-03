@@ -13,7 +13,7 @@
 
 $apiRoute = "/api/";
 
-Route::get($apiRoute, function () {
+Route::get("/", function () {
     return view('welcome');
 });
 
@@ -26,4 +26,8 @@ Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
 });
 
 Auth::routes();
+
+Route::get('/logout', 'HomeController@logout');
+Route::get('/index', 'HomeController@index');
+
 
