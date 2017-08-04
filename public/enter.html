@@ -1,0 +1,26 @@
+<html ng-app="emotionStatsApp">
+<head>
+</head>
+<body>
+
+<div ng-controller="HomeController">
+    E-mail:<br>
+    <input type="text" name="firstname" ng-model="user.email">
+    <br>
+    Password:<br>
+    <input type="password" name="password" ng-model="user.password">
+    <br><br>
+    <input type="submit" value="Submit" ng-click="login()">
+</div>
+
+<script type="text/javascript" src="lib/angular.min.js"></script>
+<script type="text/javascript" src="lib/angular-route.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="lib/jquery.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="controllers/homeController.js"></script>
+<script type="text/javascript" src="services/dataService.js"></script>
+<script type="text/javascript" src="services/interceptor.js"></script>
+
+</body>
+</html>
