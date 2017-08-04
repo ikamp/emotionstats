@@ -12,4 +12,14 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/#/signin');
     }
+
+    public function index()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            return response()->json($user);
+        }
+
+        return response()->json(false);
+    }
 }
