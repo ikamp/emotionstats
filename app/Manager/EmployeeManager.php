@@ -4,6 +4,8 @@ namespace App\Manager;
 
 use App\Entity\EmployeeEntity;
 use App\Model\EmployeeModel;
+use Illuminate\Support\Facades\Auth;
+use Mockery\Exception;
 
 class EmployeeManager
 {
@@ -42,9 +44,29 @@ class EmployeeManager
         return EmployeeModel::find($id)->update(['department_id' => $department_id]);
     }
 
+    public static function getEmailCheckControl($email)
+    {
+        $email = EmployeeModel::where('email', $email)
+            ->get();
+        if (count($email) == 0) {
+            return true;
+        }
+
+        return false;
+    }
+
     public static function getByIdWithFull($id)
     {
         $employeeInfo = EmployeeModel::with('company', 'department', 'moods')->find($id);
+
+        if (!$employeeInfo instanceof EmployeeModel) {
+            throw new Exception('İstenilen çalışan kaydına ulaşılamadı.');
+        }
+
+        if ($employeeInfo->company_id != Auth::user()->company_id) {
+            throw new Exception('Bu çalışan bilgilerini görüntülemeye yetkiniz yok.');
+        }
+
         $mapEmployeeInfo = self::mapEmployee($employeeInfo);
 
         return [
@@ -52,7 +74,8 @@ class EmployeeManager
             'employeeName' => $mapEmployeeInfo->getName(),
             'employeeEmail' => $mapEmployeeInfo->getEmail(),
             'departmentName' => $mapEmployeeInfo->getDepartmentName(),
-            'companyName' => $mapEmployeeInfo->getCompanyName()
+            'companyName' => $mapEmployeeInfo->getCompanyName(),
+            'companyId' => $mapEmployeeInfo->getCompanyId()
         ];
     }
 

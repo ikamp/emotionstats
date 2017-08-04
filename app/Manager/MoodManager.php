@@ -3,6 +3,7 @@
 namespace App\Manager;
 
 use App\Model\MoodModel;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class MoodManager
@@ -12,9 +13,11 @@ class MoodManager
         return MoodModel::find($id);
     }
 
-    public static function getGroupByCountByEmployeeId()
+    public static function getGroupByCountByEmployeeId($startDate, $endDate)
     {
         $moods = MoodModel::where('employee_id', Auth::id())
+            ->where('created_at', '>', $startDate)
+            ->where('created_at', '<', $endDate)
             ->get()
             ->groupBy('mood');
 
