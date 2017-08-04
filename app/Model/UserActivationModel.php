@@ -9,7 +9,7 @@ class UserActivationModel extends BaseModel
 
     public function employee()
     {
-        return $this->belongsTo('App\Model\Employee', 'employee_id', 'id');
+        return $this->belongsTo('App\Model\EmployeeModel', 'employee_id', 'id');
     }
 
 }

@@ -49,7 +49,6 @@ class UserActivationEntity
         $this->expirationDate = $expirationDate;
     }
 
-
     /**
      * @return mixed
      */

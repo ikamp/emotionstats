@@ -2,6 +2,7 @@
 
 namespace App\Manager;
 
+use App\Entity\UserActivationEntity;
 use App\Model\UserActivationModel;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,12 @@ class UserActivationManager
 
     public static function getByIdWithToken($id)
     {
-        $userToken = UserActivationModel::with("employee")->where("employee_id", Auth::id())->get();
+        var_dump(Auth::id());
+        $userToken = UserActivationModel::with('employee')
+            ->where("employee_id", Auth::id())
+            ->first();
+
+        var_dump($userToken);
 
         $mapUserToken = self::mapUserActivation($userToken);
 
@@ -24,16 +30,16 @@ class UserActivationManager
         ];
     }
 
-    public static function mapUserActivation(UserActivationModel $employee)
+    public static function mapUserActivation($employee)
     {
-        $UserActivationEntity = new UserActivationModel();
+        $employeeActivationEntity = new UserActivationEntity();
 
-        $UserActivationEntity->setId($employee->id);
-        $UserActivationEntity->setExpirationDate($employee->expirationDate);
-        $UserActivationEntity->setEmployeeId($employee->employeeId);
-        $UserActivationEntity->setToken($employee->token);
+        $employeeActivationEntity->setId($employee->id);
+        $employeeActivationEntity->setExpirationDate($employee->expiration_date);
+        $employeeActivationEntity->setEmployeeId($employee->employee_id);
+        $employeeActivationEntity->setToken($employee->token);
 
-        return $UserActivationEntity;
+        return $employeeActivationEntity;
     }
 
 

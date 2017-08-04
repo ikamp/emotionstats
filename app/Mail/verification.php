@@ -30,7 +30,9 @@ class verification extends Mailable
     {
         $userToken = UserActivationManager::getByIdWithToken(Auth::id());
         $this->token = $userToken;
+        var_dump($userToken);
     }
+
     /**
      * Build the message.
      *
@@ -38,14 +40,6 @@ class verification extends Mailable
      */
     public function build()
     {
-        $address = '0e69f26306-c8cb1f@inbox.mailtrap.io';
-
-        $name = 'Dilara Gozubuyuk';
-
-        $subject = 'Laravel Email';
-
-
         return $this->view('emails.verification', ["token" => $this->token]);
-
     }
 }

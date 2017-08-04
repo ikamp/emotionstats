@@ -27,6 +27,9 @@ Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
     Route::resource($apiRoute . 'employee', 'EmployeeController');
 });
 
+Route::get('/activity/{id}', 'HomeController@activity');
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
 
