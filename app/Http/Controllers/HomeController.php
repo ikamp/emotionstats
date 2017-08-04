@@ -3,6 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Entity\EmployeeEntity;
+use App\Manager\EmployeeManager;
+use App\Model\EmployeeModel;
+use App\Entity\UserActivationEntity;
+use App\Manager\UserActivationManager;
+use App\Model\UserActivationModel;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -23,6 +31,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $employee = Auth::user();
+        Mail::to($employee->email)->send(new \App\Mail\verification());
     }
+
+    public function activity($token)
+    {
+        $userToken = UserActivationManager::getByIdWithToken(Auth::id());
+        if($userToken == $token) {
+            $employee = Auth::user();
+            $employee->status = "active";
+            $employee->save();
+            var_dump($employee);
+        }
+        // return view('home');
+    }
+
+
+
 }
