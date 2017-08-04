@@ -7,6 +7,7 @@ use App\Manager\EmployeeManager;
 use App\Model\EmployeeModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Exception;
 
 
 class EmployeeController extends Controller
@@ -19,8 +20,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employee = EmployeeManager::getById(Auth::id());
-        $companyEmployees = EmployeeManager::getAllEmployeeByCompanyId($employee->company_id);
+        $companyEmployees = EmployeeManager::getAllEmployeeByCompanyId(Auth::user()->company_id);
 
         return response()->json($companyEmployees);
     }
@@ -35,18 +35,25 @@ class EmployeeController extends Controller
     {
         $authEmployee = Auth::user();
 
-        $newEmployee = EmployeeModel::create([
-            'name' => $request->employee['name'],
-            'email' => $request->employee['email'],
-            'department_id' => $request->employee['department_id'],
-            'company_id' => $authEmployee->attributes['company_id'],
-            'role' => EmployeeEntity::EMPLOYEE,
-            'status' => EmployeeEntity::WAITING
-        ]);
+        if (EmployeeManager::getEmailCheckControl($request->employee['email'])) {
+            $newEmployee = EmployeeModel::create([
+                'name' => $request->employee['name'],
+                'email' => $request->employee['email'],
+                'department_id' => $request->employee['department_id'],
+                'company_id' => $authEmployee->attributes['company_id'],
+                'role' => EmployeeEntity::EMPLOYEE,
+                'status' => EmployeeEntity::WAITING
+            ]);
 
-        //activation email
+            //activation email
 
-        return response()->json($newEmployee);
+            return response()->json($newEmployee);
+
+        } else {
+            throw new Exception('Bu email adresi zaten kayıtlı. Lütfen başka bir email adresi deneyin.');
+        }
+
+
     }
 
     /**
@@ -74,7 +81,8 @@ class EmployeeController extends Controller
         return EmployeeManager::setStatusById($id, EmployeeEntity::OFF);
     }
 
-    public function changeDepartment(Request $request) {
+    public function changeDepartment(Request $request)
+    {
         $id = $request->employee['id'];
         $department_id = $request->employee['department_id'];
 

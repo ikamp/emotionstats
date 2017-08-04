@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Manager\MoodManager;
-use App\Model\MoodModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Mockery\Exception;
-use Symfony\Component\VarDumper\Tests\Caster\ExceptionCasterTest;
+use Carbon\Carbon;
 
 class MoodController extends Controller
 {
@@ -18,7 +15,9 @@ class MoodController extends Controller
      */
     public function index()
     {
-        $mood = MoodManager::getGroupByCountByEmployeeId();
+        $startDate = Carbon::now()->addWeek(-1);
+        $endDate = Carbon::now();
+        $mood = MoodManager::getGroupByCountByEmployeeId($startDate, $endDate);
 
         return response()->json($mood);
     }
