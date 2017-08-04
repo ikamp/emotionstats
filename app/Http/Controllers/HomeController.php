@@ -31,7 +31,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        Mail::to('dilara.gzbyk19@gmail.com')->send(new \App\Mail\verification());
+        $employee = Auth::user();
+        Mail::to($employee->email)->send(new \App\Mail\verification());
     }
 
     public function activity($token)
