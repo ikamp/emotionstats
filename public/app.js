@@ -9,8 +9,14 @@ angular
                     templateUrl: 'views/home.html',
                     controller: 'HomeController'
                 })
+                .when('/mymood', {
+                    templateUrl: '/mymood/mymood.html',
+                    controller: 'MyMoodController'
+                })
                 .otherwise({
                     redirectTo: '/'
                 });
+
+
 
     });

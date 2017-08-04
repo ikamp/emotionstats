@@ -29,3 +29,4 @@ Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
 
 Auth::routes();
 
+
