@@ -5,9 +5,17 @@ angular
             $locationProvider.hashPrefix('');
 
             $routeProvider
-                .when('/home', {
+                .when('/', {
                     templateUrl: 'views/home.html',
                     controller: 'HomeController'
+                })
+                .when('/mymood', {
+                    templateUrl: '/mymood/mymood.html',
+                    controller: 'MyMoodController'
+                })
+                .when('/signin', {
+                    templateUrl: '/signin/signin.html',
+                    controller: 'SignInController'
                 })
                 .otherwise({
                     redirectTo: '/'
