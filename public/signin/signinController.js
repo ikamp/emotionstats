@@ -1,14 +1,13 @@
 angular.module('emotionStatsApp')
     .controller('SignInController', signinController);
 
-function signinController($scope, $rootScope, DataService) {
+function signinController($scope, $rootScope, $location, DataService) {
     $scope.user = {};
     $rootScope.flag = false;
 
-
     $scope.login = function () {
         DataService.postLoginData($scope.user, function (response) {
-            console.log(response);
+            $location.path("/mymood");
         })
     }
 }

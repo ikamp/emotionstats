@@ -1,9 +1,6 @@
 angular.module('emotionStatsApp')
     .controller('HomeController', homeController);
 
-function homeController($scope, $rootScope) {
+function homeController($rootScope) {
         $rootScope.flag = true;
-
-
-
 }

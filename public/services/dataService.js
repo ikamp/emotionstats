@@ -6,13 +6,10 @@ function dataService($http) {
         postLoginData: postLoginData,
     };
 
-    function postLoginData(data, callback, errorCallback) {
+    function postLoginData(data, callback) {
         $http.post('/login', data)
-            .then(function(response) {
+            .then(function (response) {
                 callback(response.data);
-            }, function(error) {
-                errorCallback(error);
             });
-
     }
 }

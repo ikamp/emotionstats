@@ -5,7 +5,7 @@ function HttpInterceptor($q, $window) {
     return {
         'responseError': function(rejection) {
             if (rejection.status == 401) {
-                $window.location.href = '#/login';
+                $window.location.href = '#/signin';
             }
             return $q.reject(rejection);
         }

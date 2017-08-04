@@ -1,7 +1,6 @@
 angular.module('emotionStatsApp')
     .controller('MyMoodController', mymoodController);
 
-function mymoodController($scope) {
-    $scope.tab = 'home';
-
+function mymoodController($rootScope) {
+    $rootScope.flag = true;
 }
