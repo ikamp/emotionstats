@@ -20,7 +20,7 @@ Route::get($apiRoute, function () {
 Route::group(['middleware' => 'auth'], function () use ($apiRoute) {
     Route::get($apiRoute . 'home', 'HomeController@index')->name('home');
     Route::resource($apiRoute . 'mood', 'MoodController');
-
+    Route::get($apiRoute . 'logout', 'UserController@logout');
 });
 
 Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
