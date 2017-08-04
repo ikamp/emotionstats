@@ -6,6 +6,8 @@ use App\Manager\MoodManager;
 use App\Model\MoodModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Exception;
+use Symfony\Component\VarDumper\Tests\Caster\ExceptionCasterTest;
 
 class MoodController extends Controller
 {
