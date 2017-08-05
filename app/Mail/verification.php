@@ -30,7 +30,6 @@ class verification extends Mailable
     {
         $userToken = UserActivationManager::getByIdWithToken($id);
         $this->token = $userToken;
-        var_dump($this->token);
     }
 
     /**
@@ -40,7 +39,6 @@ class verification extends Mailable
      */
     public function build()
     {
-        var_dump($this->token);
         $data = array( 'token' => $this->token);
         return $this->view('emails.verification', $data);
     }

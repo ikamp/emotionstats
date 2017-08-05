@@ -31,6 +31,6 @@ class CreateUserActivationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_activation');
+        Schema::dropIfExists('useractivation');
     }
 }

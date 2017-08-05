@@ -79,7 +79,6 @@ class RegisterController extends Controller
         $token->expiration_date = Carbon::now()->addHours(1);
         $token->save();
 
-        //return response()->json($token->token);
         Mail::to($employee->email)->send(new \App\Mail\verification($employee->id));
 
         return $employee;

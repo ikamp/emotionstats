@@ -22,13 +22,11 @@ class UserActivationManager
         $mapUserToken = self::mapUserActivation($userToken);
 
         return $mapUserToken->getToken();
-
     }
 
     public static function mapUserActivation($employee)
     {
         $employeeActivationEntity = new UserActivationEntity();
-
         $employeeActivationEntity->setId($employee->id);
         $employeeActivationEntity->setExpirationDate($employee->expiration_date);
         $employeeActivationEntity->setEmployeeId($employee->employee_id);

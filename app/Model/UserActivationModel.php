@@ -11,5 +11,4 @@ class UserActivationModel extends BaseModel
     {
         return $this->belongsTo('App\Model\EmployeeModel', 'employee_id', 'id');
     }
-
 }
