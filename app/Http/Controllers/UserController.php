@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use App\Manager\UserActivationManager;
 
 class UserController extends Controller
 {
@@ -20,20 +22,6 @@ class UserController extends Controller
             $user = Auth::user();
             return response()->json($user);
         }
-
         return response()->json(false);
-    }
-
-    public function activity($token)
-    {
-        $userToken = UserActivationManager::getByIdWithToken(Auth::id());
-        if($userToken == $token) {
-            $employee = Auth::user();
-            $employee->status = "active";
-            $employee->save();
-            return redirect('/#/mymood');
-        }
-
-        // return view('home');
     }
 }

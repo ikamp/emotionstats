@@ -11,7 +11,9 @@ class UserActivationManager
 
     public static function getById($id)
     {
-        return UserActivationModel::find($id);
+        return $userToken = UserActivationModel::with('employee')
+            ->where("employee_id", $id)
+            ->first();
     }
 
     public static function getByIdWithToken($id)
