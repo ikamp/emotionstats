@@ -73,7 +73,7 @@ class RegisterController extends Controller
         $employee = EmployeeModel::create([
             'name' => $data['name'],
             'role' => 'manager',
-            'status' => 'active',
+            'status' => 'waiting',
             'email' => $data['email'],
             'company_id' => $company->id,
             'password' => bcrypt($data['password']),
@@ -83,7 +83,7 @@ class RegisterController extends Controller
         $token = new UserActivationModel();
         $token->employee_id = $employee->id;
         $token->token = str_random('32');
-        $token->expiration_date = Carbon::now()->addHours(1);
+        $token->expiration_date = Carbon::now()->addMinutes(1);
         $token->save();
 
         Mail::to($employee->email)->send(new \App\Mail\verification($employee->id));

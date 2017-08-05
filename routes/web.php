@@ -29,4 +29,5 @@ Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
 
 Auth::routes();
 Route::resource("$apiRoute/user", 'UserController');
-Route::resource("activity/{id}", 'UserController');
+Route::get("activity/{id}", 'VerificationController@activity');
+Route::get("newToken", 'VerificationController@newToken');
