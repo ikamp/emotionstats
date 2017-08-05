@@ -34,6 +34,7 @@ class EmployeeManager
         return EmployeeModel::with('moods')->find($id);
     }
 
+
     public static function setStatusById($id, $status)
     {
         return EmployeeModel::find($id)->update(['status' => $status]);
@@ -79,9 +80,14 @@ class EmployeeManager
         ];
     }
 
-    public static function getAllEmployeeByCompanyId($company_id)
+    public static function getAllEmployeeByCompanyId($companyId)
     {
-        $companyEmployeeList = EmployeeModel::where('company_id', $company_id)->get();
+        return EmployeeModel::where('company_id', $companyId)->get();
+    }
+
+    public static function getAllEmployeeByCompanyIdMap($companyId)
+    {
+        $companyEmployeeList = self::getAllEmployeeByCompanyId($companyId);
         $mapCompanyEmployeeList = self::mapper($companyEmployeeList);
 
         $list = [];
