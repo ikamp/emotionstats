@@ -1,7 +1,7 @@
 angular.module('emotionStatsApp')
     .factory('Authentication', authentication);
 
-function authentication($http, $rootScope) {
+function authentication($http, $rootScope, $location) {
     return {
         getUser: getUser
     };
@@ -12,9 +12,8 @@ function authentication($http, $rootScope) {
             url: '/api/user'
         }).then(
             function (response) {
-                if(!response.data)
-                {
-                    return false;
+                if (response.data == false) {
+                    $location.path('/signin');
                 }
                 else {
                     $rootScope.employee = response.data;

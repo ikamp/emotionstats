@@ -26,9 +26,5 @@ angular
             });
 
     }).run(function ($location, Authentication) {
-
-    if(!Authentication.getUser())
-    {
-        $location.path('/signin');
-    }
+    Authentication.getUser();
 });
