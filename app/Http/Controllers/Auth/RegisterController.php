@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Model\EmployeeModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Model\UserActivationModel;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -62,12 +65,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return EmployeeModel::create([
+        $employee = EmployeeModel::create([
             'name' => $data['name'],
             'role' => 'manager',
             'status' => 'active',
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        $token = new UserActivationModel();
+        $token->employee_id = $employee->id;
+        $token->token = str_random('32');
+        $token->expiration_date = Carbon::now()->addHours(1);
+        $token->save();
+
+        //return response()->json($token->token);
+        Mail::to($employee->email)->send(new \App\Mail\verification($employee->id));
+
+        return $employee;
+
     }
 }
