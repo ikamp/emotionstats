@@ -29,3 +29,4 @@ Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
 
 Auth::routes();
 Route::resource("$apiRoute/user", 'UserController');
+Route::resource("activity/{id}", 'UserController');

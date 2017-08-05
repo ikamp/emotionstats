@@ -25,6 +25,6 @@ angular
                 redirectTo: '/'
             });
 
-    }).run(function ($location, Authentication) {
-    Authentication.getUser();
+    }).run(function (Authentication) {
+        Authentication.getUser();
 });

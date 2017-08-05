@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
     public function logout()
     {
         Auth::logout();
@@ -21,5 +22,18 @@ class UserController extends Controller
         }
 
         return response()->json(false);
+    }
+
+    public function activity($token)
+    {
+        $userToken = UserActivationManager::getByIdWithToken(Auth::id());
+        if($userToken == $token) {
+            $employee = Auth::user();
+            $employee->status = "active";
+            $employee->save();
+            return redirect('/#/mymood');
+        }
+
+        // return view('home');
     }
 }
