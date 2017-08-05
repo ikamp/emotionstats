@@ -34,7 +34,6 @@ class EmployeeManager
         return EmployeeModel::with('moods')->find($id);
     }
 
-
     public static function setStatusById($id, $status)
     {
         return EmployeeModel::find($id)->update(['status' => $status]);
@@ -135,7 +134,6 @@ class EmployeeManager
         } else {
             $employeeEntity->setCompanyName($employee->company->name);
         }
-
 
         return $employeeEntity;
     }

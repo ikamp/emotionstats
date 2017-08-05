@@ -37,6 +37,7 @@ class MoodManager
 
         $mood['moodReviews']['totalEmployeeCount'] = count($getCompanyEmployees);
         $mood['moodReviews']['totalMoodActiveEmployeeCount'] = count($getCompanyMood);
+        $mood['moodReviews']['percent'] = (100 / $mood['moodReviews']['totalEmployeeCount']) * $mood['moodReviews']['totalMoodActiveEmployeeCount'];
 
         return $mood;
     }
