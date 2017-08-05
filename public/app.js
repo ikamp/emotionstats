@@ -17,15 +17,18 @@ angular
                 templateUrl: '/signin/signin.html',
                 controller: 'SignInController'
             })
+            .when('/signup', {
+                templateUrl: '/signup/signup.html',
+                controller: 'SignUpController'
+            })
             .otherwise({
                 redirectTo: '/'
             });
 
-    })
-    .run(function ($location, Authentication) {
+    }).run(function ($location, Authentication) {
 
-        if(!Authentication.getUser())
-        {
-            $location.path('/signin');
-        }
-    });
+    if(!Authentication.getUser())
+    {
+        $location.path('/signin');
+    }
+});

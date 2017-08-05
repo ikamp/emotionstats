@@ -4,8 +4,16 @@ angular.module('emotionStatsApp')
 function dataService($http) {
     return {
         postLoginData: postLoginData,
-        getUser: getUser
+        getUser: getUser,
+        postRegisterData: postRegisterData
     };
+
+    function postRegisterData(data, callback) {
+        $http.post('/register', data)
+            .then(function (response) {
+                callback(response.data);
+            });
+    }
 
     function postLoginData(data, callback) {
         $http.post('/login', data)
