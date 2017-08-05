@@ -1,24 +1,30 @@
 // Define the `emotionStatsApp` module
 angular
     .module('emotionStatsApp', ['ngRoute'])
-        .config(function ($routeProvider, $locationProvider) {
-            $locationProvider.hashPrefix('');
+    .config(function ($routeProvider, $locationProvider) {
+        $locationProvider.hashPrefix('');
 
-            $routeProvider
-                .when('/', {
-                    templateUrl: 'views/home.html',
-                    controller: 'HomeController'
-                })
-                .when('/mymood', {
-                    templateUrl: '/mymood/mymood.html',
-                    controller: 'MyMoodController'
-                })
-                .when('/signin', {
-                    templateUrl: '/signin/signin.html',
-                    controller: 'SignInController'
-                })
-                .otherwise({
-                    redirectTo: '/'
-                });
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/home.html',
+                controller: 'HomeController'
+            })
+            .when('/mymood', {
+                templateUrl: '/mymood/mymood.html',
+                controller: 'MyMoodController'
+            })
+            .when('/signin', {
+                templateUrl: '/signin/signin.html',
+                controller: 'SignInController'
+            })
+            .when('/signup', {
+                templateUrl: '/signup/signup.html',
+                controller: 'SignUpController'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
 
-    });
+    }).run(function ($location, Authentication) {
+    Authentication.getUser();
+});

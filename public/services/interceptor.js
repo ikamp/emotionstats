@@ -1,11 +1,11 @@
 angular.module('emotionStatsApp')
     .factory('HttpInterceptor', HttpInterceptor);
 
-function HttpInterceptor($q, $window) {
+function HttpInterceptor($q, $location) {
     return {
         'responseError': function(rejection) {
             if (rejection.status == 401) {
-                $window.location.href = '#/signin';
+                $location.path('/signin');
             }
             return $q.reject(rejection);
         }
