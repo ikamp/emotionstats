@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Model\CompanyModel;
 use App\Model\EmployeeModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -65,12 +66,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $company = new CompanyModel();
+        $company->name = $data['company_name'];
+        $company->save();
+
         $employee = EmployeeModel::create([
             'name' => $data['name'],
             'role' => 'manager',
             'status' => 'active',
             'email' => $data['email'],
+            'company_id' => $company->id,
             'password' => bcrypt($data['password']),
+
         ]);
 
         $token = new UserActivationModel();
