@@ -1,4 +1,4 @@
-<div class="col-sm-10 container employees-container">
+<div class="col-sm-9 container employees-container">
     <div class="row">
         <div class="col-sm-4 heading">
             <h3>Employee Management</h3>
@@ -13,15 +13,15 @@
             <div id="home" class="tab-pane fade in active">
                 <br><br>
                 <div class="row">
-                    <div class="input-box col-sm-4">
+                    <div class="input-box col-sm-3">
                         <input type="text" name="form-username" placeholder="Name"
                                class="form-username form-control col-sm-3" id="form-name" ng-model="search">
                     </div>
-                    <div class="input-box col-sm-4">
+                    <div class="input-box col-sm-3">
                         <input type="text" name="form-username" placeholder="Email"
                                class="form-username form-control col-sm-3" id="form-email" ng-model="search">
                     </div>
-                    <div class="input-box col-sm-4">
+                    <div class="input-box col-sm-3">
                         <input type="text" name="form-username" placeholder="Department"
                                class="form-username form-control col-sm-3" id="form-department" ng-model="search">
                     </div>
@@ -49,7 +49,7 @@
                                     class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button>
                         </th>
                     </tr>
-                    <tr ng-repeat="employee in employees | filter:search | orderBy:order">
+                    <tr ng-repeat="employee in employees | filter:search | orderBy:order track by $index ">
                         <td>{{employee.employeeName}}</td>
                         <td>{{employee.employeeEmail}}</td>
                         <td>{{employee.departmentName}}</td>
