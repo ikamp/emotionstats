@@ -20,7 +20,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $companyEmployees = EmployeeManager::getAllEmployeeByCompanyId(Auth::user()->company_id);
+        $companyEmployees = EmployeeManager::getAllEmployeeByCompanyIdMap(Auth::user()->company_id);
 
         return response()->json($companyEmployees);
     }

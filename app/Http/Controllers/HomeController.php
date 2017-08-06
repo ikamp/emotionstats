@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Manager\MoodManager;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('checkIfManager');
     }
 
     /**
@@ -23,6 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $startDate = Carbon::now()->addWeek(-4);
+        $endDate = Carbon::now();
+
+        $mood = MoodManager::getMoodCalculateByCompanyId($startDate, $endDate);
+
+        return response()->json($mood);
     }
 }
