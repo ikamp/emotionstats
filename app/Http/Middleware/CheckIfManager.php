@@ -18,7 +18,6 @@ class CheckIfManager
     public function handle($request, Closure $next)
     {
         $auth = Auth::user();
-
         if (Auth::user()->role != EmployeeEntity::MANAGER) {
             return redirect('/api/home');
         }

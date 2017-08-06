@@ -14,8 +14,6 @@ class VerificationController extends Controller
     {
         $now = Carbon::now();
         $userToken = UserActivationManager::getById(Auth::id());
-        var_dump(Auth::id());
-        var_dump($userToken);
         if (Auth::user()->status != "active") {
             if ($userToken->expiration_date < $now) {
                 $userToken->token = str_random('32');
@@ -33,9 +31,7 @@ class VerificationController extends Controller
     {
         $userToken = UserActivationManager::getByIdWithToken(Auth::id());
         if ($userToken == $token) {
-            var_dump($userToken);
             $employee = Auth::user();
-            var_dump(Auth::user()->id);
             $employee->status = "active";
             $employee->save();
             return redirect('/#/mymood');

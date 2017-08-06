@@ -1,0 +1,78 @@
+<div class="col-sm-10 container employees-container">
+    <div class="row">
+        <div class="col-sm-4 heading">
+            <h3>Employee Management</h3>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href=#"home">All Employees</a></li>
+            <li><a data-toggle="tab" href="#menu1">Invite New Employees</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <br><br>
+                <div class="row">
+                    <div class="input-box col-sm-4">
+                        <input type="text" name="form-username" placeholder="Name"
+                               class="form-username form-control col-sm-3" id="form-name" ng-model="search">
+                    </div>
+                    <div class="input-box col-sm-4">
+                        <input type="text" name="form-username" placeholder="Email"
+                               class="form-username form-control col-sm-3" id="form-email" ng-model="search">
+                    </div>
+                    <div class="input-box col-sm-4">
+                        <input type="text" name="form-username" placeholder="Department"
+                               class="form-username form-control col-sm-3" id="form-department" ng-model="search">
+                    </div>
+
+                </div>
+                <br><br>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Name
+                            <button type="button" ng-click="order='employeeName'" class="btn btn-default btn-xs"
+                                    aria-label="Left Align"><span
+                                    class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button>
+                        </th>
+                        <th>Email Adress
+                            <button type="button" ng-click="order='employeeEmail'" class="btn btn-default btn-xs"
+                                    aria-label="Left Align"><span
+                                    class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button>
+                        </th>
+                        <th>Department
+                            <button type="button" ng-click="order='departmentName'" class="btn btn-default btn-xs"
+                                    aria-label="Left Align"><span
+                                    class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button>
+                        </th>
+                        <th>Action
+                            <button type="button" class="btn btn-default btn-xs" aria-label="Left Align"><span
+                                    class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button>
+                        </th>
+                    </tr>
+                    <tr ng-repeat="employee in employees | filter:search | orderBy:order">
+                        <td>{{employee.employeeName}}</td>
+                        <td>{{employee.employeeEmail}}</td>
+                        <td>{{employee.departmentName}}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                                    Action
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Change Department</a></li>
+                                    <li><a href="#">Remove From Company</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.</p>
+            </div>
+        </div>
+    </div>
+</div>
