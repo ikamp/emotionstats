@@ -38,7 +38,7 @@ class MoodManager
 
             for ($i = 1; $i <= 5; $i++) {
                 if (isset($moods[$i])) {
-                    $mood['TotalPresent' . $i] = number_format($singleMoodValue * $mood['Total' . $i], 1);
+                    $mood['TotalPercent' . $i] = number_format($singleMoodValue * $mood['Total' . $i], 1);
                 }
             }
         }

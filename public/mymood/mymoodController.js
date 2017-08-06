@@ -40,33 +40,33 @@ function mymoodController($scope, $rootScope, DataService) {
             $scope.mood = "happy"
         }
 
-        if (response.TotalPresent1) {
+        if (response.TotalPercent1) {
             $scope.sad = {
-                "rate": response.TotalPresent1,
+                "rate": response.TotalPercent1,
                 "total": response.Total1,
             };
         }
-        if (response.TotalPresent2) {
+        if (response.TotalPercent2) {
             $scope.unhappy = {
-                "rate": response.TotalPresent2,
+                "rate": response.TotalPercent2,
                 "total": response.Total2
             };
         }
-        if (response.TotalPresent3) {
+        if (response.TotalPercent3) {
             $scope.ok = {
-                "rate": response.TotalPresent3,
+                "rate": response.TotalPercent3,
                 "total": response.Total3
             };
         }
-        if (response.TotalPresent4) {
+        if (response.TotalPercent4) {
             $scope.satisfied = {
-                "rate": response.TotalPresent4,
+                "rate": response.TotalPercent4,
                 "total": response.Total4
             };
         }
-        if (response.TotalPresent5) {
+        if (response.TotalPercent5) {
             $scope.happy = {
-                "rate": response.TotalPresent5,
+                "rate": response.TotalPercent5,
                 "total": response.Total5
             };
         }
