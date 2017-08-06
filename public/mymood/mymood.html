@@ -1,26 +1,40 @@
-<div class="col-md-10">
-    <div class="row">
-        <h2>My Moods</h2>
-        <div class="panel panel-default col-md-5 box-avarage">
-            <div class="panel-body">
-                Average Mood ( Last 4 weeks )
+<div class="container col-sm-10 ">
+    <h3>My Moods</h3>
+    <div class="line-container col-sm-12">
+        <div class="row">
+            <div class="col-sm-3 common-box">
+                Total
+                <div class="line-box">
+            <span>
+              <p>{{data.totalCount}}</p>
+              <p>Given Moods</p>
+            </span>
+                </div>
             </div>
-        </div>
-        <div class="panel panel-default col-md-5 box-avarage">
-            <div class="panel-body">
-                Mood reviews ( Current weeks )
+            <div class="col-sm-3 common-box">
+                Avarage Mood
+                <div class="line-box">
+            <span>
+              <p>{{mood}}</p>
+            </span>
+                </div>
             </div>
-        </div>
-        <div class="panel panel-default col-md-5 box-avarage">
-            <div class="panel-body">
-                Top 5 Reason - Tags
-            </div>
-        </div>
-        <div class="panel panel-default col-md-5 box-avarage">
-            <div class="panel-body">
-                Reason ( Current week )
+            <div class="col-sm-6 common-box">
+                Distribution
+                <div class="line-box col-sm-12">
+                    <div class="col-sm-6">
+              <span>
+                <p>
+                  <span class="dark-green">happy(%{{happy.rate}})  {{happy.total}}</span>
+                  <span class="red">sad(%{{sad.rate}})  {{sad.total}}</span>
+                  <span class="yellow">unhappy(%{{unhappy.rate}})  {{unhappy.total}}</span>
+                  <span class="l-green">ok(%{{ok.rate}})  {{ok.total}}</span>
+                  <span class="l-green">satisfied(%{{satisfied.rate}})  {{satisfied.total}}</span>
+                </p>
+              </span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
