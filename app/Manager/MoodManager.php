@@ -52,10 +52,10 @@ class MoodManager
 
             for ($i = 1; $i <= 5; $i++) {
                 if (isset($moods[$i])) {
-                    $mood[$i . 'Total'] = count($moods[$i]);
-                    $mood['totalCount'] += $mood[$i . 'Total'];
-                    $mood['average'] += $mood[$i . 'Total'];
-                    $total += $mood[$i . 'Total'] * $i;
+                    $mood['mood' . $i . 'Total'] = count($moods[$i]);
+                    $mood['totalCount'] += $mood['mood' . $i . 'Total'];
+                    $mood['average'] += $mood['mood' . $i . 'Total'];
+                    $total += $mood['mood' . $i . 'Total'] * $i;
                 }
             }
 
@@ -64,7 +64,7 @@ class MoodManager
 
             for ($i = 1; $i <= 5; $i++) {
                 if (isset($moods[$i])) {
-                    $mood[$i . 'TotalPresent'] = number_format($singleMoodValue * $mood[$i . 'Total'], 1);
+                    $mood['mood' . $i . 'TotalPercent'] = number_format($singleMoodValue * $mood['mood' . $i . 'Total'], 1);
                 }
             }
         }
