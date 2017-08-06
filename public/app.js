@@ -21,6 +21,10 @@ angular
                 templateUrl: '/signup/signup.html',
                 controller: 'SignUpController'
             })
+            .when('/employee', {
+                templateUrl: '/employee/employee.html',
+                controller: 'EmployeeController'
+            })
             .otherwise({
                 redirectTo: '/'
             });

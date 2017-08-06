@@ -76,8 +76,9 @@ class RegisterController extends Controller
             'status' => 'waiting',
             'email' => $data['email'],
             'company_id' => $company->id,
+            'remember_token' => str_random(10),
             'password' => bcrypt($data['password']),
-
+            'department_id' => 3
         ]);
 
         $token = new UserActivationModel();
