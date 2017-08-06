@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entity\EmployeeEntity;
 use App\Manager\EmployeeManager;
+use App\Model\DepartmentModel;
 use App\Model\EmployeeModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -87,5 +88,17 @@ class EmployeeController extends Controller
         $department_id = $request->employee['department_id'];
 
         return EmployeeManager::setDepartmentById($id, $department_id);
+    }
+
+    public function newDepartment(Request $request)
+    {
+        $departmentName = $request->departmentName;
+
+        $department = new DepartmentModel();
+        $department->name = $departmentName;
+        $department->company_id = Auth::user()->company_id;
+        $department->save();
+
+        return $department;
     }
 }
