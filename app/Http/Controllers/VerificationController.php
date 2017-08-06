@@ -18,13 +18,11 @@ class VerificationController extends Controller
             if ($userToken->expiration_date < $now) {
                 $userToken->token = str_random('32');
                 $userToken->expiration_date = Carbon::now()->addHours(1);
-                $control = $userToken->save();
-                var_dump($control);
+                $userToken->save();
 
                 Mail::to(Auth::user()->email)->send(new \App\Mail\verification(Auth::user()->id));
             }
         }
-        var_dump(true);
     }
 
     public function activity($token)

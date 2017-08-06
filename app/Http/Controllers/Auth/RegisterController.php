@@ -79,7 +79,6 @@ class RegisterController extends Controller
             'remember_token' => str_random(10),
             'password' => bcrypt($data['password']),
             'department_id' => 3
-
         ]);
 
         $token = new UserActivationModel();

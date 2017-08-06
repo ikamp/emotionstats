@@ -3,9 +3,8 @@ angular.module('emotionStatsApp')
 
 function employeeController($scope, $rootScope, $location, DataService) {
     $rootScope.flag = true;
-    $scope.order;
-    $scope.search;
-
+    $scope.order = '';
+    $scope.search = '';
 
     DataService.getEmployee(function (response) {
         $scope.employees = response;
