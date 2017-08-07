@@ -3,9 +3,8 @@ angular.module('emotionStatsApp')
 
 function mymoodController($scope, $rootScope, DataService) {
     $rootScope.flag = true;
-
     DataService.getMood(function (response) {
-        $scope.data = response;
+        $scope.data= response;
         $scope.sad = {
             "rate": 0,
             "total": 0
@@ -70,6 +69,6 @@ function mymoodController($scope, $rootScope, DataService) {
                 "total": response.Total5
             };
         }
-    });
 
+    });
 }
