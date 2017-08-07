@@ -7,7 +7,7 @@
     <div class="row">
         <ul class="nav nav-tabs">
             <li><a data-toggle="tab" href="/#/employee">All Employees</a></li>
-            <li  class="active"><a data-toggle="tab" href="/#/employee-add">Invite New Employees</a></li>
+            <li class="active"><a data-toggle="tab" href="/#/employee-add">Invite New Employees</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade in active">
@@ -15,21 +15,21 @@
                 <div class="row">
                     <div class="input-box col-sm-3">
                         <input type="text" name="form-username" placeholder="Name"
-                               class="form-username form-control col-sm-3" id="form-name" ng-model="search">
+                               class="form-username form-control col-sm-3" id="form-name" ng-model="newEgit mployee.name">
                     </div>
                     <div class="input-box col-sm-3">
                         <input type="text" name="form-username" placeholder="Email"
-                               class="form-username form-control col-sm-3" id="form-email" ng-model="search">
+                               class="form-username form-control col-sm-3" id="form-email" ng-model="newEmployee.email">
                     </div>
-                    <div class="dropdown"  >
-                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" class="col-sm-3" >
+                    <div class="dropdown col-sm-2">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                             Select Department
                             <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Change Department</a></li>
-                            <li><a href="#">Remove From Company</a></li>
+                        <ul class="dropdown-menu" >
+                            <li ng-click="getValue(department)" value="{{department.id}}" ng-repeat="department in departments"><p>{{department.name}}</p> </li>
                         </ul>
                     </div>
+                    <button class="btn btn-default col-sm-2" type="button" ng-click="addEmployee()">Invite New Employee</button>
                 </div>
 
             </div>
