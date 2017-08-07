@@ -10,6 +10,7 @@ use App\Model\EmployeeModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Exception;
+use Illuminate\Support\Facades\Mail;
 
 
 class EmployeeController extends Controller
@@ -50,7 +51,7 @@ class EmployeeController extends Controller
                 'status' => EmployeeEntity::WAITING
             ]);
 
-            //activation email
+            Mail::to($newEmployee->email)->send(new \App\Mail\Employee($newEmployee->id, $newEmployee->email, Auth::user()->name));
 
             return response()->json($newEmployee);
 
