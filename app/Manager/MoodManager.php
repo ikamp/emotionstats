@@ -18,6 +18,7 @@ class MoodManager
         $moods = MoodModel::where('employee_id', Auth::id())
             ->where('created_at', '>', $startDate)
             ->where('created_at', '<', $endDate)
+            ->where('status', true)
             ->get()
             ->groupBy('mood');
 
@@ -70,6 +71,7 @@ class MoodManager
                     $mood['Total' . $i] = count($moods[$i]);
                     $mood['totalCount'] += $mood['Total' . $i];
                     $mood['average'] += $mood['Total' . $i];
+                    $total += $mood['Total' . $i] * $i;
                 }
             }
 

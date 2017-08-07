@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Manager\EmployeeManager;
 use App\Manager\MoodManager;
+use App\Model\EmployeeModel;
+use App\Model\MoodModel;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -32,8 +35,20 @@ class HomeController extends Controller
         $beforeFourWeek = Carbon::now()->addWeek(-4);
         $mood['averageMood'] = MoodManager::getWeekAverageMoodByCompanyId($beforeFourWeek, $now);
 
-
-
         return response()->json($mood);
+    }
+
+    public function run()
+    {
+        $employees = EmployeeModel::all();
+
+        foreach ($employees as $employee) {
+            $mood = new MoodModel();
+            $mood->employee_id = $employee->id;
+            $mood->company_id = $employee->company_id;
+            $mood->status = false;
+            $mood->mood = 0;
+            $mood->save();
+        }
     }
 }
