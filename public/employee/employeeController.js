@@ -7,7 +7,6 @@ function employeeController($scope, $rootScope, $location, DataService) {
     $scope.search = '';
 
     DataService.getEmployee(function (response) {
-        $scope.employees = response;
-        console.log($scope);
+        $scope.employees = response.employees;
     });
 }

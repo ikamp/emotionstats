@@ -7,8 +7,8 @@ function dataService($http) {
         getUser: getUser,
         postRegisterData: postRegisterData,
         getEmployee: getEmployee,
-        getMood: getMood
-
+        getMood: getMood,
+        postEmployee: postEmployee
     };
 
     function postRegisterData(data, callback) {
@@ -20,6 +20,13 @@ function dataService($http) {
 
     function postLoginData(data, callback) {
         $http.post('/login', data)
+            .then(function (response) {
+                callback(response.data);
+            });
+    }
+
+    function postEmployee(data, callback) {
+        $http.post('/api/employee', data)
             .then(function (response) {
                 callback(response.data);
             });

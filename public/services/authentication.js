@@ -16,7 +16,7 @@ function authentication($http, $rootScope, $location) {
                     $location.path('/signin');
                 }
                 else {
-                    $rootScope.employee = response.data;
+                    $rootScope.person = response.data;
                 }
             });
     }

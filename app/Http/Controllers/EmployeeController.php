@@ -10,6 +10,7 @@ use App\Model\EmployeeModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Exception;
+use Illuminate\Support\Facades\Mail;
 
 
 class EmployeeController extends Controller
@@ -24,7 +25,7 @@ class EmployeeController extends Controller
     {
         $companyId = Auth::user()->company_id;
 
-        $companyEmployees = EmployeeManager::getAllEmployeeByCompanyIdMap($companyId);
+        $companyEmployees['employees'] = EmployeeManager::getAllEmployeeByCompanyIdMap($companyId);
         $companyEmployees['departments'] = DepartmentManager::getDepartmentByCompanyId($companyId);
 
         return response()->json($companyEmployees);
@@ -45,12 +46,12 @@ class EmployeeController extends Controller
                 'name' => $request->employee['name'],
                 'email' => $request->employee['email'],
                 'department_id' => $request->employee['department_id'],
-                'company_id' => $authEmployee->attributes['company_id'],
+                'company_id' => $authEmployee['company_id'],
                 'role' => EmployeeEntity::EMPLOYEE,
                 'status' => EmployeeEntity::WAITING
             ]);
 
-            //activation email
+            Mail::to($newEmployee->email)->send(new \App\Mail\Employee($newEmployee->id, $newEmployee->email, Auth::user()->name));
 
             return response()->json($newEmployee);
 
