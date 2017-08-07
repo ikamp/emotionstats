@@ -105,4 +105,17 @@ class EmployeeController extends Controller
 
         return $department;
     }
+
+    public function createPassword(Request $request)
+    {
+        $employeeId = $request->employeeId;
+        $password = $request->password;
+
+        $employee = EmployeeModel::find($employeeId);
+        $employee->password = bcrypt($password);
+        $employee->status = 'active';
+        $employee->save();
+
+        return $employee;
+    }
 }
