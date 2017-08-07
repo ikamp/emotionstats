@@ -24,10 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $startDate = Carbon::now()->addWeek(-4);
-        $endDate = Carbon::now();
+        $now = Carbon::now();
 
-        $mood = MoodManager::getMoodCalculateByCompanyId($startDate, $endDate);
+        $currentWeek = Carbon::now()->addWeek(-1);
+        $mood['moodReviews'] = MoodManager::getMoodReviewByCompanyId($currentWeek, $now);
+
+        $beforeFourWeek = Carbon::now()->addWeek(-4);
+        $mood['averageMood'] = MoodManager::getWeekAverageMoodByCompanyId($beforeFourWeek, $now);
+
+
 
         return response()->json($mood);
     }
