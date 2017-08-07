@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () use ($apiRoute) {
 
 Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
     Route::resource($apiRoute . 'employee', 'EmployeeController');
+    Route::post($apiRoute . 'new-department', 'EmployeeController@newDepartment');
 });
 
 Auth::routes();
