@@ -79,9 +79,14 @@ class EmployeeManager
         ];
     }
 
-    public static function getAllEmployeeByCompanyId($company_id)
+    public static function getAllEmployeeByCompanyId($companyId)
     {
-        $companyEmployeeList = EmployeeModel::where('company_id', $company_id)->get();
+        return EmployeeModel::where('company_id', $companyId)->get();
+    }
+
+    public static function getAllEmployeeByCompanyIdMap($companyId)
+    {
+        $companyEmployeeList = self::getAllEmployeeByCompanyId($companyId);
         $mapCompanyEmployeeList = self::mapper($companyEmployeeList);
 
         $list = [];
@@ -129,7 +134,6 @@ class EmployeeManager
         } else {
             $employeeEntity->setCompanyName($employee->company->name);
         }
-
 
         return $employeeEntity;
     }

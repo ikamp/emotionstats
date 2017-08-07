@@ -10,4 +10,9 @@ class DepartmentManager
     {
         return DepartmentModel::find($id);
     }
+
+    public static function getDepartmentByCompanyId($companyId)
+    {
+        return DepartmentModel::where('company_id', $companyId)->get();
+    }
 }
