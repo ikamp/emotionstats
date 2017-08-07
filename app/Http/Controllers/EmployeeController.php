@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entity\EmployeeEntity;
+use App\Manager\DepartmentManager;
 use App\Manager\EmployeeManager;
 use App\Model\DepartmentModel;
 use App\Model\EmployeeModel;
@@ -21,7 +22,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $companyEmployees = EmployeeManager::getAllEmployeeByCompanyIdMap(Auth::user()->company_id);
+        $companyId = Auth::user()->company_id;
+
+        $companyEmployees = EmployeeManager::getAllEmployeeByCompanyIdMap($companyId);
+        $companyEmployees['departments'] = DepartmentManager::getDepartmentByCompanyId($companyId);
 
         return response()->json($companyEmployees);
     }
