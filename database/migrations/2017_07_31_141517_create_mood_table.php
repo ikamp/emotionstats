@@ -19,7 +19,7 @@ class CreateMoodTable extends Migration
             $table->integer("employee_id");
             $table->string("mood");
             $table->string("status");
-            $table->string("description");
+            $table->string("description")->nullable();
             $table->timestamps();
 
             $table->foreign("employee_id")->references("id")->on("employee");
