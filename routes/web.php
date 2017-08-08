@@ -25,7 +25,6 @@ Route::group(['middleware' => 'auth'], function () use ($apiRoute) {
 
 Route::group(['middleware' => 'checkIfManager'], function () use ($apiRoute) {
     Route::resource($apiRoute . 'employee', 'EmployeeController');
-    Route::post($apiRoute . 'new-department', 'EmployeeController@newDepartment');
 });
 
 Auth::routes();
@@ -33,4 +32,3 @@ Route::resource("$apiRoute/user", 'UserController');
 Route::get("activity/{id}", 'VerificationController@activity');
 Route::get("newToken", 'VerificationController@newToken');
 Route::get($apiRoute . 'run', 'HomeController@run');
-Route::get($apiRoute. 'create-password' , 'EmployeeController@createPassword');
