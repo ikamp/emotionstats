@@ -8,6 +8,3 @@ function DashboardController($rootScope, $scope, DataService) {
         }
     )
 };
-
-
-
