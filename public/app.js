@@ -15,15 +15,18 @@ angular
             })
             .when('/signin', {
                 templateUrl: '/signin/signin.html',
-                controller: 'SignInController'
+                controller: 'SignInController',
+                publicAccess: true
             })
             .when('/signup', {
                 templateUrl: '/signup/signup.html',
-                controller: 'SignUpController'
+                controller: 'SignUpController',
+                publicAccess: true
             })
             .when('/create-password/:id', {
                 templateUrl: '/create-password/create-password.html',
-                controller: 'CreatePasswordController'
+                controller: 'CreatePasswordController',
+                publicAccess: true
             })
             .when('/employee', {
                 templateUrl: '/employee/employee.html',
@@ -37,6 +40,10 @@ angular
                 redirectTo: '/'
             });
 
-    }).run(function (Authentication) {
-    Authentication.getUser();
+    }).run(function ($rootScope, Authentication) {
+    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+        if (!(next.$$route && next.$$route.publicAccess)) {
+            Authentication.getUser();
+        }
+    });
 });
