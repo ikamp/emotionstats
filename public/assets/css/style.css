@@ -265,12 +265,13 @@ body > div.container > div > div > div > div.form-bottom > form > button {
 }
 
 /* MyMood Page CSS */
-
+.container {
+    margin: 10px 0 0 0;
+}
 .container .row .common-box {
     text-align: left;
     color: #000;
-    font-weight: bold;
-    font-size: 14px;
+    font-size: 18px;
     text-align: left;
 }
 
@@ -279,7 +280,7 @@ body > div.container > div > div > div > div.form-bottom > form > button {
     line-height: 200px;
     text-align: center;
     color: #000;
-    font-weight: bold;
+
 }
 
 .container .row .line-box span {
@@ -332,11 +333,11 @@ body > div.container > div > div > div > div.form-bottom > form > button {
 }
 
 .dark-green {
-    color: green;
+    color: #239223;
 }
 
 .red {
-    color: red;
+    color: #e03f3f;
 }
 
 .yellow {
@@ -372,4 +373,9 @@ body > div.container > div > div > div > div.form-bottom > form > button {
 
 .input-box .form-control {
     border: 1px solid;
+}
+
+.bg-white {
+    background: #fff;
+    height: 100%;
 }

@@ -1,9 +1,9 @@
-<div class="container col-sm-10 ">
+<div class="container col-sm-10 bg-white">
     <h3>My Moods</h3>
     <div class="line-container col-sm-12">
         <div class="row">
             <div class="col-sm-3 common-box">
-                Total
+                <h4>Total</h4>
                 <div class="line-box">
                     <span>
                       <p>{{data.totalCount}}</p>
@@ -12,35 +12,29 @@
                 </div>
             </div>
             <div class="col-sm-3 common-box">
-                Avarage Mood
+                <h4>Avarage Mood</h4>
                 <div class="line-box">
-            <span>
-              <p>{{mood}}
-              <img src="{{mood}}.png" /></p>
-            </span>
+                    <span>
+                      <p>
+                         <img src="{{moodPoint}}.png"/>
+                      </p>
+                        <p>
+                            {{mood}}
+                        </p>
+                    </span>
                 </div>
             </div>
             <div class="col-sm-6 common-box" ng-controller="GraphController">
-                Distribution
-                <div class="line-box col-sm-12">
-                    <div class="col-sm-6">
-              <span>
-                <p>
-                  <span class="dark-green">happy(%{{happy.rate}})  {{happy.total}}</span>
-                  <span class="red">sad(%{{sad.rate}})  {{sad.total}}</span>
-                  <span class="yellow">unhappy(%{{unhappy.rate}})  {{unhappy.total}}</span>
-                  <span class="l-green">ok(%{{ok.rate}})  {{ok.total}}</span>
-                  <span class="l-green">satisfied(%{{satisfied.rate}})  {{satisfied.total}}</span>
-                </p>
-              </span>
-                        <fusioncharts id="chartcontainer" chartid="chart1" width="100%" height="300" type="pie3d"
+                <h4>Distribution</h4>
+                <div class="col-sm-12">
+                    <div class="line-box">
+                        <fusioncharts id="chartcontainer" chartid="chart1" width="100%" height="400" type="pie3d"
                                       dataFormat='json' ,
-                                      dataSource="{{myDataSource1}}" config="{{chartoptions}}"></fusioncharts>
+                                      dataSource="{{myDataSource1}}" config="{{chartoptions}}">
+                        </fusioncharts>
                     </div>
-                    <div class="col-sm-6"></div>
                 </div>
             </div>
         </div>
-        <div class="row graphic-box col-sm-12"></div>
     </div>
 </div>
