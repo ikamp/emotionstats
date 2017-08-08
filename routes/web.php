@@ -33,4 +33,4 @@ Route::resource("$apiRoute/user", 'UserController');
 Route::get("activity/{id}", 'VerificationController@activity');
 Route::get("newToken", 'VerificationController@newToken');
 Route::get($apiRoute . 'run', 'HomeController@run');
-Route::get($apiRoute. 'create-password' , 'EmployeeController@createPassword');
+Route::post($apiRoute . 'create-password', 'EmployeeController@createPassword');
