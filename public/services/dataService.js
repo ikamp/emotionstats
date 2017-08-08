@@ -6,6 +6,7 @@ function dataService($http) {
         postLoginData: postLoginData,
         getUser: getUser,
         postRegisterData: postRegisterData,
+        postPassword: postPassword,
         getEmployee: getEmployee,
         getMood: getMood,
         postEmployee: postEmployee
@@ -13,6 +14,13 @@ function dataService($http) {
 
     function postRegisterData(data, callback) {
         $http.post('/register', data)
+            .then(function (response) {
+                callback(response.data);
+            });
+    }
+
+    function postPassword(data, callback) {
+        $http.post('/api/create-password', data)
             .then(function (response) {
                 callback(response.data);
             });
