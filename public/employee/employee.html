@@ -45,10 +45,7 @@
                                     aria-label="Left Align"><span
                                     class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button>
                         </th>
-                        <th>Action
-                            <button type="button" class="btn btn-default btn-xs" aria-label="Left Align"><span
-                                    class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button>
-                        </th>
+                        <th>Action</th>
                     </tr>
                     <tr ng-repeat="employee in employees | filter:search | orderBy:order track by $index ">
                         <td>{{employee.employeeName}}</td>
