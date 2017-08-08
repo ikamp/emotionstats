@@ -3,7 +3,6 @@ angular.module('emotionStatsApp')
 
 function mymoodController($scope, $rootScope, DataService) {
     $rootScope.flag = true;
-
     DataService.getMood(function (response) {
         $scope.data = response;
         $scope.sad = {
@@ -26,17 +25,19 @@ function mymoodController($scope, $rootScope, DataService) {
             "rate": 0,
             "total": 0
         };
+
+        $scope.moodPoint = response.average;
         $scope.mood;
 
-        if (response.average == 1) {
+        if ($scope.moodPoint == 1) {
             $scope.mood = "sad"
-        } else if (response.average == 2) {
+        } else if ($scope.moodPoint == 2) {
             $scope.mood = "unhappy"
-        } else if (response.average == 3) {
+        } else if ($scope.moodPoint == 3) {
             $scope.mood = "ok"
-        } else if (response.average == 4) {
+        } else if ($scope.moodPoint == 4) {
             $scope.mood = "satisfied"
-        } else if (response.average == 5) {
+        } else if ($scope.moodPoint == 5) {
             $scope.mood = "happy"
         }
 
@@ -70,6 +71,6 @@ function mymoodController($scope, $rootScope, DataService) {
                 "total": response.Total5
             };
         }
-    });
 
+    });
 }

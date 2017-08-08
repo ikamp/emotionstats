@@ -55,7 +55,16 @@ class MoodManager
                 return Carbon::parse($date->created_at)->format('d-m');
             });
 
-        return $getCompanyWeekMood;
+        $list = [];
+        foreach ($getCompanyWeekMood as $key => $item) {
+            if (count($item) > 1) {
+                $list[$key] = self::moodCalculate($item);
+            } else {
+                $list[$key]['average'] = $item[0]['mood'];
+            }
+        }
+
+        return $list;
     }
 
     public static function moodCalculate($moods)

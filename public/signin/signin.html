@@ -1,11 +1,30 @@
-<div class="col-md-10">
-
-    E-mail:<br>
-    <input type="text" name="firstname" ng-model="user.email">
-    <br>
-    Password:<br>
-    <input type="password" name="password" ng-model="user.password">
-    <br><br>
-    <input type="submit" value="Submit" ng-click="login()">
-
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 col-md-offset-5">
+            <div class="form-box">
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3>Login to our site</h3>
+                        <p>Enter username and password to log on:</p>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="fa fa-lock"></i>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <form class="login-form">
+                        <div class="form-group">
+                            <label class="sr-only" form="form-username">Email</label>
+                            <input type="text" name="form-username" placeholder="Email" class="form-username form-control" id="form-username" ng-model="user.email">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" form="form-password">Password</label>
+                            <input type="password" name="form-password" placeholder="Password" class="form-password form-control" id="form-password" ng-model="user.password">
+                        </div>
+                        <button type="submit" class="btn" ng-click="login()">Login!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

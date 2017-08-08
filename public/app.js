@@ -1,6 +1,6 @@
 // Define the `emotionStatsApp` module
 angular
-    .module('emotionStatsApp', ['ngRoute'])
+    .module('emotionStatsApp', ['ngRoute', 'ng-fusioncharts'])
     .config(function ($routeProvider, $locationProvider) {
         $locationProvider.hashPrefix('');
 
@@ -32,6 +32,10 @@ angular
             .when('/employee-add', {
                 templateUrl: '/employee-add/employee-add.html',
                 controller: 'EmployeeAddController'
+            })
+            .when('/dashboard', {
+                templateUrl: '/dashboard/dashboard.html',
+                controller: 'DashboardController'
             })
             .otherwise({
                 redirectTo: '/'
