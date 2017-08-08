@@ -4,7 +4,7 @@ angular.module('emotionStatsApp')
 function graphController($scope, DataService) {
     $scope.myDataSource1 = {};
     DataService.getMood(function (response) {
-        $scope.data= response;
+        $scope.data = response;
         $scope.sad = {
             "rate": 0,
             "total": 0
@@ -27,15 +27,15 @@ function graphController($scope, DataService) {
         };
 
         if (response.average == 1) {
-            $scope.mood = "sad"
+            $scope.mood = "sad";
         } else if (response.average == 2) {
-            $scope.mood = "unhappy"
+            $scope.mood = "unhappy";
         } else if (response.average == 3) {
-            $scope.mood = "ok"
+            $scope.mood = "ok";
         } else if (response.average == 4) {
-            $scope.mood = "satisfied"
+            $scope.mood = "satisfied";
         } else if (response.average == 5) {
-            $scope.mood = "happy"
+            $scope.mood = "happy";
         }
 
         if (response.TotalPercent1) {
@@ -70,7 +70,7 @@ function graphController($scope, DataService) {
         }
 
         $scope.myDataSource1 = {
-            chart: {caption: "Your mood"},
+            chart: {caption: "Your mood distribution"},
             data: [
                 {label: "Sad", value: $scope.sad.rate},
                 {label: "Unhappy", value: $scope.unhappy.rate},
@@ -78,12 +78,6 @@ function graphController($scope, DataService) {
                 {label: "Satisfied", value: $scope.satisfied.rate},
                 {label: "Happy", value: $scope.happy.rate}
             ]
-
         };
     });
-
-
-
-
-
 }
