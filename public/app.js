@@ -1,6 +1,6 @@
 // Define the `emotionStatsApp` module
 angular
-    .module('emotionStatsApp', ['ngRoute'])
+    .module('emotionStatsApp', ['ngRoute', 'ng-fusioncharts'])
     .config(function ($routeProvider, $locationProvider) {
         $locationProvider.hashPrefix('');
 
@@ -21,14 +21,22 @@ angular
                 templateUrl: '/signup/signup.html',
                 controller: 'SignUpController'
             })
+            .when('/create-password/:id', {
+                templateUrl: '/create-password/create-password.html',
+                controller: 'CreatePasswordController'
+            })
             .when('/employee', {
                 templateUrl: '/employee/employee.html',
                 controller: 'EmployeeController'
+            })
+            .when('/employee-add', {
+                templateUrl: '/employee-add/employee-add.html',
+                controller: 'EmployeeAddController'
             })
             .otherwise({
                 redirectTo: '/'
             });
 
     }).run(function (Authentication) {
-        Authentication.getUser();
+    Authentication.getUser();
 });

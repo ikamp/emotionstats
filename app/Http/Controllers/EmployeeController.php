@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Entity\EmployeeEntity;
+use App\Manager\DepartmentManager;
 use App\Manager\EmployeeManager;
+use App\Model\DepartmentModel;
 use App\Model\EmployeeModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Exception;
+use Illuminate\Support\Facades\Mail;
 
 
 class EmployeeController extends Controller
@@ -20,7 +23,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $companyEmployees = EmployeeManager::getAllEmployeeByCompanyIdMap(Auth::user()->company_id);
+        $companyId = Auth::user()->company_id;
+
+        $companyEmployees['employees'] = EmployeeManager::getAllEmployeeByCompanyIdMap($companyId);
+        $companyEmployees['departments'] = DepartmentManager::getDepartmentByCompanyId($companyId);
 
         return response()->json($companyEmployees);
     }
@@ -40,12 +46,12 @@ class EmployeeController extends Controller
                 'name' => $request->employee['name'],
                 'email' => $request->employee['email'],
                 'department_id' => $request->employee['department_id'],
-                'company_id' => $authEmployee->attributes['company_id'],
+                'company_id' => $authEmployee['company_id'],
                 'role' => EmployeeEntity::EMPLOYEE,
                 'status' => EmployeeEntity::WAITING
             ]);
 
-            //activation email
+            Mail::to($newEmployee->email)->send(new \App\Mail\Employee($newEmployee->id, $newEmployee->email, Auth::user()->name));
 
             return response()->json($newEmployee);
 
@@ -87,5 +93,30 @@ class EmployeeController extends Controller
         $department_id = $request->employee['department_id'];
 
         return EmployeeManager::setDepartmentById($id, $department_id);
+    }
+
+    public function newDepartment(Request $request)
+    {
+        $departmentName = $request->departmentName;
+
+        $department = new DepartmentModel();
+        $department->name = $departmentName;
+        $department->company_id = Auth::user()->company_id;
+        $department->save();
+
+        return $department;
+    }
+
+    public function createPassword(Request $request)
+    {
+        $employeeId = $request->employeeId;
+        $password = $request->password;
+
+        $employee = EmployeeModel::find($employeeId);
+        $employee->password = bcrypt($password);
+        $employee->status = 'active';
+        $employee->save();
+
+        return $employee;
     }
 }

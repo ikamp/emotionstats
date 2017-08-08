@@ -6,9 +6,10 @@ function dataService($http) {
         postLoginData: postLoginData,
         getUser: getUser,
         postRegisterData: postRegisterData,
+        postPassword: postPassword,
         getEmployee: getEmployee,
-        getMood: getMood
-
+        getMood: getMood,
+        postEmployee: postEmployee
     };
 
     function postRegisterData(data, callback) {
@@ -18,8 +19,22 @@ function dataService($http) {
             });
     }
 
+    function postPassword(data, callback) {
+        $http.post('/api/create-password', data)
+            .then(function (response) {
+                callback(response.data);
+            });
+    }
+
     function postLoginData(data, callback) {
         $http.post('/login', data)
+            .then(function (response) {
+                callback(response.data);
+            });
+    }
+
+    function postEmployee(data, callback) {
+        $http.post('/api/employee', data)
             .then(function (response) {
                 callback(response.data);
             });
