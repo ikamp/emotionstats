@@ -21,6 +21,10 @@ angular
                 templateUrl: '/signup/signup.html',
                 controller: 'SignUpController'
             })
+            .when('/create-password/:id', {
+                templateUrl: '/create-password/create-password.html',
+                controller: 'CreatePasswordController'
+            })
             .when('/employee', {
                 templateUrl: '/employee/employee.html',
                 controller: 'EmployeeController'
