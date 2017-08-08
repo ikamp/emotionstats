@@ -9,7 +9,8 @@ function dataService($http) {
         postPassword: postPassword,
         getEmployee: getEmployee,
         getMood: getMood,
-        postEmployee: postEmployee
+        postEmployee: postEmployee,
+        getEmployeesMoodAverage: getEmployeesMoodAverage
     };
 
     function postRegisterData(data, callback) {
@@ -64,6 +65,16 @@ function dataService($http) {
         $http({
             method: 'GET',
             url: '/api/mood'
+        }).then(
+            function (response) {
+                callback && callback(response.data);
+            });
+    }
+
+    function getEmployeesMoodAverage(callback) {
+        $http({
+            method: 'GET',
+            url: '/api/home'
         }).then(
             function (response) {
                 callback && callback(response.data);
