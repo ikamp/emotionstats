@@ -29,10 +29,6 @@ angular
                 templateUrl: '/employee/employee.html',
                 controller: 'EmployeeController'
             })
-            .when('/employee-add', {
-                templateUrl: '/employee-add/employee-add.html',
-                controller: 'EmployeeAddController'
-            })
             .when('/dashboard', {
                 templateUrl: '/dashboard/dashboard.html',
                 controller: 'DashboardController'
