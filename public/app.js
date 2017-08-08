@@ -33,6 +33,10 @@ angular
                 templateUrl: '/employee-add/employee-add.html',
                 controller: 'EmployeeAddController'
             })
+            .when('/dashboard', {
+                templateUrl: '/dashboard/dashboard.html',
+                controller: 'DashboardController'
+            })
             .otherwise({
                 redirectTo: '/'
             });
