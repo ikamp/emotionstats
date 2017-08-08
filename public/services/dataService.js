@@ -9,7 +9,8 @@ function dataService($http) {
         postPassword: postPassword,
         getEmployee: getEmployee,
         getMood: getMood,
-        postEmployee: postEmployee
+        postEmployee: postEmployee,
+        postDepartment: postDepartment
     };
 
     function postRegisterData(data, callback) {
@@ -21,6 +22,13 @@ function dataService($http) {
 
     function postPassword(data, callback) {
         $http.post('/api/create-password', data)
+            .then(function (response) {
+                callback(response.data);
+            });
+    }
+
+    function postDepartment(data, callback) {
+        $http.post('/api/new-department', data)
             .then(function (response) {
                 callback(response.data);
             });
