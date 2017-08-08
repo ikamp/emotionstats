@@ -1,32 +1,44 @@
 <html ng-app="emotionStatsApp">
-<head>
-    <title>Homepage</title>
-    <link href="styles/main.css" rel="stylesheet">
-    <link href="styles/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-<nav class="navbar navbar-default" ng-show="flag">
-    <div class="container-fluid">
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">{{person.name}}<span class="glyphicon glyphicon-menu-hamburger"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/api/logout">Logout</a></li>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Homepage</title>
+       
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default" ng-show="flag">
+            <div class="container-fluid">
+                <div id="navbar" class="navbar-collapse collapse">
+                    <div class="nav navbar-nav">
+                        <img class="mood-logo" src="/assets/img/logos/mood-logo.png">
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Sign in <span class="sr-only">(current)</span></a></li>
+                        <li class="different"><a href="#">Sign up</a></li>
+                         <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                   aria-expanded="false">{{person.name}}<span class="glyphicon glyphicon-menu-hamburger"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="/api/logout">Logout</a></li>
+                              </ul>
+                      </ul>
                     </ul>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-</nav>
-<div>
-    <div class="container-fluid">
-        <div class="col-md-2" ng-show="flag">
-            <div class="left">
+                </div>
+            </div>
+        </nav>
+        <div class="col-sm-2 left-menu-container" ng-show="flag">
+            <div class="left-menu">
                 <div class="item">
                     <span class="glyphicon glyphicon-th-large"></span>
                     Dashboard
@@ -41,30 +53,29 @@
                 </div>
             </div>
         </div>
-        <div ng-view></div>
-    </div>
-</div>
-
-<script type="text/javascript" src="lib/angular.min.js"></script>
-<script type="text/javascript" src="lib/angular-route.min.js"></script>
-<script type="text/javascript" src="app.js"></script>
-<script type="text/javascript" src="lib/jquery.min.js"></script>
-<script type="text/javascript" src="lib/bootstrap.min.js"></script>
-<script type="text/javascript" src="controllers/homeController.js"></script>
-<script type="text/javascript" src="controllers/graphController.js"></script>
-<script type="text/javascript" src="mymood/mymoodController.js"></script>
-<script type="text/javascript" src="signin/signinController.js"></script>
-<script type="text/javascript" src="create-password/createPasswordController.js"></script>
-<script type="text/javascript" src="signup/signupController.js"></script>
-<script type="text/javascript" src="employee/employeeController.js"></script>
-<script type="text/javascript" src="employee-add/employeeAddController.js"></script>
-<script type="text/javascript" src="services/dataService.js"></script>
-<script type="text/javascript" src="services/authentication.js"></script>
-<script type="text/javascript" src="https://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
-<script type="text/javascript" src="https://fusioncharts.github.io/angular-fusioncharts/demos/js/angular-fusioncharts.min.js"></script>
-<script type="text/javascript" src="https://fusioncharts.github.io/angular-fusioncharts/demos/js/angular-fusioncharts.min.js"></script>
-
-
-
-</body>
+        <div>
+            <div ng-view></div>
+        </div>
+        <script type="text/javascript" src="lib/angular.min.js"></script>
+        <script type="text/javascript" src="lib/angular-route.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="controllers/homeController.js"></script>
+        <script type="text/javascript" src="controllers/graphController.js"></script>
+        <script type="text/javascript" src="mymood/mymoodController.js"></script>
+        <script type="text/javascript" src="signin/signinController.js"></script>
+        <script type="text/javascript" src="signup/signupController.js"></script>
+        <script type="text/javascript" src="create-password/createPasswordController.js"></script>
+        <script type="text/javascript" src="employee/employeeController.js"></script>
+        <script type="text/javascript" src="services/dataService.js"></script>
+        <script type="text/javascript" src="services/authentication.js"></script>
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        <script type="text/javascript" src="employee-add/employeeAddController.js"></script>
+        <script type="text/javascript" src="https://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+        <script type="text/javascript" src="https://fusioncharts.github.io/angular-fusioncharts/demos/js/angular-fusioncharts.min.js"></script>
+    </body>
 </html>
