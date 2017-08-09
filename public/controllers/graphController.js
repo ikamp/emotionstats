@@ -70,7 +70,26 @@ function graphController($scope, DataService) {
         }
 
         $scope.myDataSource1 = {
-            chart: {caption: "Your mood distribution"},
+            chart: {
+                caption: "Your mood distribution",
+                "numberprefix": "",
+                "plotgradientcolor": "",
+                "bgcolor": "transparent",
+                "showalternatehgridcolor": "0",
+                "divlinecolor": "CCCCCC",
+                "showvalues": "0",
+                "showcanvasborder": "0",
+                "canvasborderalpha": "0",
+                "canvasbordercolor": "CCCCCC",
+                "canvasborderthickness": "1",
+                "captionpadding": "30",
+                "linethickness": "3",
+                "yaxisvaluespadding": "15",
+                "legendshadow": "0",
+                "legendborderalpha": "0",
+                "palettecolors": "#f8bd19,#008ee4,#33bdda,#e44a00,#6baa01,#583e78",
+                "showborder": "0"
+            },
             data: [
                 {label: "Sad", value: $scope.sad.rate},
                 {label: "Unhappy", value: $scope.unhappy.rate},

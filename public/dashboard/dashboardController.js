@@ -6,6 +6,7 @@ function DashboardController($rootScope, $scope, DataService) {
     $scope.categories = [];
     $scope.dataset = {};
 
+
     $rootScope.flag = true;
     DataService.getEmployeesAverageMood(function (response) {
             $scope.data = response;
@@ -40,24 +41,32 @@ function DashboardController($rootScope, $scope, DataService) {
                 }
 
             ];
+
+        $scope.dataset = [
+            {
+                "seriesname": "2013",
+                "data": [
+                ]
+            }
+        ];
+
             angular.forEach($scope.moodAverages, function (value, key) {
                 $scope.categories[0]['category'].push({
                     'label': key
                 });
+
+                angular.forEach(value, function (obj, tag) {
+                    if (tag == "average") {
+                        $scope.dataset[0]['data'].push({
+                            'value': obj
+                        });
+                    }
+
+                });
             });
+
             console.log($scope.categories[0]['category']);
 
-
-            $scope.dataset = [
-                {
-                    "seriesname": "2013",
-                    "data": [
-                        {
-                            "value": "22400"
-                        }
-                    ]
-                }
-            ];
         }
     )
 }
