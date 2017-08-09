@@ -14,16 +14,33 @@ function dataService($http) {
         postDepartment: postDepartment,
         postChangedDepartment: postChangedDepartment,
         postOffEmployee: postOffEmployee,
-        postMood:postMood,
-        postToken:postToken,
+        postMood: postMood,
+        postToken: postToken,
+        sendNewToken: sendNewToken
+
 
     };
 
-    function postToken(data, callback) {
+    function sendNewToken(data, callback, errorCallback) {
+        $http.post('/api/newToken', data)
+            .then(function (response) {
+                    callback(response.data);
+                },
+                function (response) {
+                    errorCallback && errorCallback(response)
+                });
+
+    }
+
+    function postToken(data, callback, errorCallback) {
         $http.post('/api/activity', data)
             .then(function (response) {
-                callback(response.data);
-            });
+                    callback(response.data);
+                },
+                function (response) {
+                    errorCallback && errorCallback(response)
+                });
+
     }
 
     function postDepartment(data, callback) {
