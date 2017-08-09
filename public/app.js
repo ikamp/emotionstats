@@ -36,7 +36,7 @@ angular
                 templateUrl: '/dashboard/dashboard.html',
                 controller: 'DashboardController'
             })
-            .when('/mood-add', {
+            .when('/mood-add/:id', {
                 templateUrl: '/mood-add/mood-add.html',
                 controller: 'MoodAddController'
             })
