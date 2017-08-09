@@ -1,40 +1,46 @@
 <h1 class="page-header">My Mood</h1>
-
-<div class="container col-sm-10 bg-white">
-    <div class="line-container col-sm-12">
-        <div class="row">
-            <div class="col-sm-3 common-box">
-                <h4>Total</h4>
-                <div class="line-box">
-                    <span>
-                      <p>{{data.totalCount}}</p>
-                      <p>Given Moods</p>
-                    </span>
-                </div>
+<div class="row hk-box-center hk">
+    <div class="col-lg-4 ">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Total
             </div>
-            <div class="col-sm-3 common-box">
-                <h4>Avarage Mood</h4>
-                <div class="line-box">
-                    <span>
-                      <p>
-                         <img src="{{moodPoint}}.png"/>
-                      </p>
-                        <p>
-                            {{mood}}
-                        </p>
-                    </span>
-                </div>
+            <div class="panel-body height-400 line-height-400">
+                <p class="font-size-100">{{data.totalCount}}</p>
             </div>
-            <div class="col-sm-6 common-box" ng-controller="GraphController">
-                <h4>Distribution</h4>
-                <div class="col-sm-12">
-                    <div class="line-box">
-                        <fusioncharts id="chartcontainer" chartid="chart1" width="100%" height="400" type="pie3d"
-                                      dataFormat='json' ,
-                                      dataSource="{{myDataSource1}}" config="{{chartoptions}}">
-                        </fusioncharts>
-                    </div>
-                </div>
+            <div class="panel-footer">
+                Given Moods
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Average Mood
+            </div>
+            <div class="panel-body height-400 ">
+                <p>
+                    <img class="img-responsive" height="100" width="200" style="display: inline-block"
+                         src="assets/img/mood/{{moodPoint}}.png"/>
+                </p>
+            </div>
+            <div class="panel-footer">
+                {{mood}}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Distribution
+            </div>
+            <div class="panel-body" ng-controller="GraphController">
+                <p>
+                    <fusioncharts id="chartcontainer" chartid="chart1" width="100%" height="400" type="pie2d"
+                                  dataFormat='json' ,
+                                  dataSource="{{myDataSource1}}" config="{{chartoptions}}">
+                    </fusioncharts>
+                </p>
             </div>
         </div>
     </div>
