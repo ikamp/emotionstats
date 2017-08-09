@@ -1,4 +1,4 @@
-<div class="col-sm-10 container employees-container bg-white" >
+<div class="col-sm-10 container employees-container bg-white">
     <div class="row">
         <div class="col-sm-4 heading">
             <h3>Employee Management</h3>
@@ -16,11 +16,11 @@
                 <div class="row">
                     <div class="input-box col-sm-3">
                         <input type="text" name="form-username" placeholder="Name"
-                               class="form-username form-control col-sm-3"  ng-model="search">
+                               class="form-username form-control col-sm-3" ng-model="search">
                     </div>
                     <div class="input-box col-sm-3">
                         <input type="text" name="form-username" placeholder="Email"
-                               class="form-username form-control col-sm-3"  ng-model="search">
+                               class="form-username form-control col-sm-3" ng-model="search">
                     </div>
                     <div class="input-box col-sm-3">
                         <input type="text" name="form-username" placeholder="Department"
@@ -57,15 +57,18 @@
                                     Action
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Change Department</a></li>
-                                    <li><a href="#">Remove From Company</a></li>
+                                    <li><a href="" data-toggle="modal" data-target="#myModal"
+                                           ng-click="addEmployee(employee)">Change Department</a>
+                                    </li>
+                                    <li>Remove From Company</li>
                                 </ul>
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
-            <div id="employee-add" ng-controller="EmployeeAddController" class="tab-pane fade in "
+
+            <div id="employee-add" ng-controller="EmployeeAddController" class="tab-pane fade in"
                  class="tab-pane fade in active">
                 <br><br>
                 <div class="row">
@@ -105,5 +108,33 @@
             </div>
         </div>
     </div>
-</div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" ng-controller="EmployeeController">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Change {{worker.employeeName}}'s Department</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="dropdown col-sm-1">
+                        <button class="btn dropdown-toggle btn-xs" type="button" data-toggle="dropdown">
+                            Select Department
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li ng-click="getValue(department, employee)" value="{{department.id}}"
+                                ng-repeat="department in departments"><p>{{department.name}}</p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="addChangedDepartment()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -12,13 +12,12 @@ function employeeAddController($scope, $rootScope, $location, DataService) {
     });
 
     $scope.addEmployee = function () {
-        console.log({employee: $scope.newEmployee});
         DataService.postEmployee({employee: $scope.newEmployee}, function (response) {
             $location.path("/mymood");
         });
-    }
+    };
 
     $scope.getValue = function (item) {
         $scope.newEmployee.department_id = item.id;
-    }
+    };
 }
