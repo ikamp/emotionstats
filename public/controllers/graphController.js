@@ -71,7 +71,7 @@ function graphController($scope, DataService) {
 
         $scope.myDataSource1 = {
             chart: {
-                caption: "Your mood distribution",
+                "caption": "Your mood distribution",
                 "numberprefix": "",
                 "plotgradientcolor": "",
                 "bgcolor": "transparent",
