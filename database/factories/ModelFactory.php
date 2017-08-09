@@ -20,7 +20,7 @@ $factory->define(App\Model\CompanyModel::class, function (Faker\Generator $faker
 $factory->define(App\Model\DepartmentModel::class, function (Faker\Generator $faker) {
 
     return [
-        'name' => str_random(10),
+        'name' => 'DP-' . $faker->name,
         'company_id' => 1
     ];
 });
@@ -36,18 +36,18 @@ $factory->define(App\Model\EmployeeModel::class, function (Faker\Generator $fake
         'status' => 'active',
         'remember_token' => str_random(10),
         'company_id' => 1,
-        'department_id' => $faker->numberBetween(1,5)
+        'department_id' => $faker->numberBetween(1, 5)
     ];
 });
 
 $factory->define(App\Model\MoodModel::class, function (Faker\Generator $faker) {
 
     return [
-        'mood' => $faker->randomFloat(0,1,5),
+        'mood' => $faker->randomFloat(0, 1, 5),
         'status' => true,
         'description' => str_random(10),
         'company_id' => 1,
-        'employee_id' => $faker->numberBetween(1,50)
+        'employee_id' => $faker->numberBetween(1, 50)
 
     ];
 });
@@ -56,7 +56,7 @@ $factory->define(App\Model\MoodReasonModel::class, function (Faker\Generator $fa
 
     return [
         'reason' => str_random(10),
-        'mood_id' => $faker->numberBetween(1,100)
+        'mood_id' => $faker->numberBetween(1, 100)
     ];
 });
 

@@ -1,71 +1,86 @@
 <html ng-app="emotionStatsApp">
 <head>
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Homepage</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Emotion Stats</title>
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="assets/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/form-elements.css">
-    <link rel="stylesheet" href="assets/css/style.css">
 
     <link rel="shortcut icon" href="assets/ico/favicon.png">
 </head>
 <body>
-<nav class="navbar navbar-default" ng-show="flag">
-    <div class="container-fluid">
-        <div id="navbar" class="navbar-collapse collapse">
-            <div class="nav navbar-nav">
-                <img class="mood-logo" src="/assets/img/logos/mood-logo.png">
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li ng-if="!person"><a href="/#/signin">Sign in <span class="sr-only">(current)</span></a></li>
-                <li ng-if="!person" class="different"><a href="/#/signup">Sign up</a></li>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">{{person.name}} <span
-                                class="glyphicon glyphicon-menu-hamburger"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/api/logout">Logout</a></li>
-                        </ul>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0" ng-show="flag">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/#/dashboard">
+                <b>Emotion Stats</b> <span style="font-size: 13px;">hook team</span>
+            </a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li ng-if="!person"><a href="/#/signin">Sign in <span class="sr-only">(current)</span></a></li>
+            <li ng-if="!person" class="different"><a href="/#/signup">Sign up</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> {{person.name}} <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="/api/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
-            </ul>
+            </li>
+        </ul>
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="/#/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/#/mymood"><i class="fa fa-heart fa-fw"></i> My Mood</a>
+                    </li>
+                    <li>
+                        <a href="/#/employee"><i class="fa fa-users fa-fw"></i> Employees</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12" ng-view>
+                </div>
+            </div>
         </div>
     </div>
-</nav>
-<div class="col-sm-2 left-menu-container" ng-show="flag">
-    <div class="left-menu">
-        <div class="item">
-            <a href="/#/dashboard">
-                <span class="glyphicon glyphicon-th-large"></span>
-                Dashboard
-            </a>
-        </div>
-        <div class="item active">
-            <a href="/#/mymood">
-                <span class="glyphicon glyphicon-heart"></span>
-                My Moods
-            </a>
-        </div>
-        <div class="item">
-            <a href="/#/employee">
-                <span class="glyphicon glyphicon-user"></span>
-                Employees
-            </a>
-        </div>
-    </div>
+
 </div>
-<div>
-    <div ng-view></div>
-</div>
+
 <script type="text/javascript" src="lib/angular.min.js"></script>
 <script type="text/javascript" src="lib/angular-route.min.js"></script>
-<script type="text/javascript" src="lib/jquery.min.js"></script>
+<script src="assets/vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
-<script type="text/javascript" src="lib/bootstrap.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/vendor/metisMenu/metisMenu.min.js"></script>
+<script src="assets/dist/js/sb-admin-2.js"></script>
 <script type="text/javascript" src="controllers/homeController.js"></script>
 <script type="text/javascript" src="controllers/graphController.js"></script>
 <script type="text/javascript" src="mymood/mymoodController.js"></script>
