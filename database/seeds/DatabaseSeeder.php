@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
     {
         factory(App\Model\CompanyModel::class, 1)->create();
         factory(App\Model\DepartmentModel::class, 5)->create();
-        factory(App\Model\EmployeeModel::class,50)->create();
-        factory(App\Model\MoodModel::class,100)->create();
-        factory(App\Model\MoodReasonModel::class,200)->create();
+        factory(App\Model\EmployeeModel::class,250)->create();
+        factory(App\Model\MoodModel::class,1000)->create();
+        factory(App\Model\MoodReasonModel::class,2000)->create();
 
         return;
     }

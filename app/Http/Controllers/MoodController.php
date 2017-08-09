@@ -15,9 +15,7 @@ class MoodController extends Controller
      */
     public function index()
     {
-        $startDate = Carbon::now()->addWeek(-1);
-        $endDate = Carbon::now();
-        $mood = MoodManager::getMoodCalculateByEmployeeId($startDate, $endDate);
+        $mood = MoodManager::getMoodCalculateByEmployeeId();
 
         return response()->json($mood);
     }
@@ -35,7 +33,17 @@ class MoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mood = $request->mood;
+        $description = $request->description;
+        $moodId = $request->moodId;
+
+        $getMood = MoodManager::getById($moodId);
+        $getMood->mood = $mood;
+        $getMood->description = $description;
+        $getMood->status = true;
+        $getMood->save();
+
+        return $getMood;
     }
 
     /**
