@@ -89,8 +89,8 @@ class EmployeeController extends Controller
 
     public function changeDepartment(Request $request)
     {
-        $id = $request->employee['id'];
-        $department_id = $request->employee['department_id'];
+        $id = $request->employeeId;
+        $department_id = $request->departmentId;
 
         return EmployeeManager::setDepartmentById($id, $department_id);
     }
