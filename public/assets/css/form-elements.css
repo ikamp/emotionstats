@@ -1,19 +1,35 @@
 .hk-box-center {
     text-align: center;
 }
+
 .hk {
     font-size: 18px;
     font-weight: 700;
 }
-.height-400{
+
+.height-400 {
     height: 400px;
 }
-.line-height-400{
+
+.line-height-400 {
     line-height: 400px;
 }
-.font-size-100{
+
+.font-size-100 {
     font-size: 100px;
     font-weight: 600;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.line-height-normal {
+    line-height: normal;
+}
+
+.margin-150 {
+    margin-top: 150px
 }
 
 input[type="text"],

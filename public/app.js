@@ -36,6 +36,10 @@ angular
                 templateUrl: '/dashboard/dashboard.html',
                 controller: 'DashboardController'
             })
+            .when('/mood-add', {
+                templateUrl: '/mood-add/mood-add.html',
+                controller: 'MoodAddController'
+            })
             .otherwise({
                 redirectTo: '/'
             });
