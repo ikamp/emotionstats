@@ -60,7 +60,7 @@
                                     <li><a href="" data-toggle="modal" data-target="#myModal"
                                            ng-click="addEmployee(employee)">Change Department</a>
                                     </li>
-                                    <li>Remove From Company</li>
+                                    <li><a href="" ng-click="addEmployee(employee); addOffEmployee()">Remove From Company</a></li>
                                 </ul>
                             </div>
                         </td>
@@ -132,7 +132,8 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close
                     </button>
-                    <button type="button" class="btn btn-primary" ng-click="addChangedDepartment()">Save changes</button>
+                    <button type="button" class="btn btn-primary" ng-click="addChangedDepartment()">Save changes
+                    </button>
                 </div>
             </div>
         </div>
