@@ -13,11 +13,9 @@ class MoodManager
         return MoodModel::find($id);
     }
 
-    public static function getMoodCalculateByEmployeeId($startDate, $endDate)
+    public static function getMoodCalculateByEmployeeId()
     {
         $moods = MoodModel::where('employee_id', Auth::id())
-            ->where('created_at', '>', $startDate)
-            ->where('created_at', '<', $endDate)
             ->where('status', true)
             ->get()
             ->groupBy('mood');
