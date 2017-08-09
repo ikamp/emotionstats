@@ -11,7 +11,8 @@ function dataService($http) {
         getMood: getMood,
         postEmployee: postEmployee,
         getEmployeesAverageMood: getEmployeesAverageMood,
-        postDepartment: postDepartment
+        postDepartment: postDepartment,
+        postChangedDepartment:postChangedDepartment
     };
 
     function postDepartment(data, callback) {
@@ -23,6 +24,13 @@ function dataService($http) {
 
     function postRegisterData(data, callback) {
         $http.post('/register', data)
+            .then(function (response) {
+                callback(response.data);
+            });
+    }
+
+    function postChangedDepartment(data, callback) {
+        $http.post('/api/changeDepartment', data)
             .then(function (response) {
                 callback(response.data);
             });

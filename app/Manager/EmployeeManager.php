@@ -41,7 +41,7 @@ class EmployeeManager
 
     public static function setDepartmentById($id, $department_id)
     {
-        return EmployeeModel::find($id)->update(['department_id' => $department_id]);
+        var_dump(EmployeeModel::find($id)->update(['department_id' => $department_id])) ;
     }
 
     public static function getEmailCheckControl($email)
