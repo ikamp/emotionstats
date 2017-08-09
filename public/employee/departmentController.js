@@ -3,11 +3,11 @@ angular.module('emotionStatsApp')
 
 function departmentController($scope, $rootScope, $location, DataService) {
     $rootScope.flag = true;
-    $scope.department = {};
+    $rootScope.department = {};
 
     $scope.addNewDepartment = function () {
-        DataService.postDepartment($scope.department, function (response) {
-            $location.path("/mymoodg");
+        DataService.postDepartment($rootScope.department, function (response) {
+            $location.path("/mymood");
         })
     }
 }
