@@ -1,3 +1,4 @@
+<body>
 <h1 class="page-header">Employee</h1>
 <div class="row">
     <ul class="nav nav-tabs">
@@ -43,11 +44,15 @@
                     <th>Action</th>
                 </tr>
                 <tr ng-repeat="employee in employees | filter:search | orderBy:order track by $index ">
-                    <td>{{employee.employeeName}}</td>
+                    <td>
+                        <span ng-if="employee.role == 'manager'" class="fa fa-star"></span>
+                        <span class="fa fa-user"></span>
+                        {{employee.employeeName}}</td>
                     <td>{{employee.employeeEmail}}</td>
                     <td>{{employee.departmentName}}</td>
                     <td>
-                        <div class="dropdown">
+                        <span ng-if="employee.status == 'off'" class="fa fa-times"></span>
+                        <div class="dropdown" ng-if="employee.status != 'off'" >
                             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                                 Action
                                 <span class="caret"></span></button>
@@ -55,7 +60,8 @@
                                 <li><a href="" data-toggle="modal" data-target="#myModal"
                                        ng-click="addEmployee(employee)">Change Department</a>
                                 </li>
-                                <li>Remove From Company</li>
+                                <li><a href="" ng-click="addEmployee(employee); addOffEmployee()">Remove From
+                                    Company</a></li>
                             </ul>
                         </div>
                     </td>
@@ -132,3 +138,4 @@
         </div>
     </div>
 </div>
+</body>
