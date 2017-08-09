@@ -6,7 +6,7 @@ function DashboardController($rootScope, $scope, DataService) {
     $scope.categories = [];
     $scope.dataset = {};
     $scope.myDataSource2 = {};
-
+    $scope.dshMoodReviews = {};
 
     $rootScope.flag = true;
     DataService.getEmployeesAverageMood(function (response) {
@@ -34,6 +34,7 @@ function DashboardController($rootScope, $scope, DataService) {
 
             $scope.moodAverages = $scope.data.averageMood;
             $scope.moodReviews = $scope.data.moodReviews;
+            $scope.dshMoodReviews = $scope.data.moodReviews;
 
             $scope.categories = [
                 {
