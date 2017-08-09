@@ -36,7 +36,7 @@ class EmployeeManager
 
     public static function setStatusById($id, $status)
     {
-        return EmployeeModel::find($id)->update(['status' => $status]);
+        var_dump(EmployeeModel::find($id)->update(['status' => $status]));
     }
 
     public static function setDepartmentById($id, $department_id)
@@ -96,7 +96,9 @@ class EmployeeManager
                 'employeeName' => $employee->getName(),
                 'employeeEmail' => $employee->getEmail(),
                 'departmentName' => $employee->getDepartmentName(),
-                'companyName' => $employee->getCompanyName()
+                'companyName' => $employee->getCompanyName(),
+                'status' => $employee->getStatus(),
+                'role' => $employee->getRole()
             ];
         }
 
@@ -122,6 +124,8 @@ class EmployeeManager
         $employeeEntity->setEmail($employee->email);
         $employeeEntity->setDepartmentId($employee->department_id);
         $employeeEntity->setCompanyId($employee->company_id);
+        $employeeEntity->setStatus($employee->status);
+        $employeeEntity->setRole($employee->role);
 
         if (!isset($employee->department->name)) {
             $employeeEntity->setDepartmentName(DepartmentManager::getById($employeeEntity->getDepartmentId())->name);

@@ -18,10 +18,23 @@ function employeeController($scope, $rootScope, $location, DataService) {
     $scope.addEmployee = function (employee) {
         $rootScope.changedDepartment.employeeId = employee.employeeId;
         $rootScope.worker.employeeName = employee.employeeName;
+        $rootScope.worker.employeeId = employee.employeeId;
+
+    };
+
+    $scope.addOffEmployee = function () {
+        DataService.postOffEmployee({employeeId: $rootScope.worker.employeeId}, function (response) {
+            $location.path("/mymood");
+        });
     };
 
 
     DataService.getEmployee(function (response) {
+        if(response.employees.role == "manager")
+        {
+            $scope.role = "manager";
+        }
+
         $scope.employees = response.employees;
     });
 
