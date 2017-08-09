@@ -40,6 +40,10 @@ angular
                 templateUrl: '/mood-add/mood-add.html',
                 controller: 'MoodAddController'
             })
+            .when('/activity/:token', {
+                templateUrl: '/activity/activity.html',
+                controller: 'ActivityController'
+            })
             .otherwise({
                 redirectTo: '/'
             });
