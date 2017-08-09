@@ -20,9 +20,8 @@ class Mood extends Mailable
     public $employeeName;
     public $moodId;
 
-    public function __construct($id, $name, $moodId)
+    public function __construct($name, $moodId)
     {
-        $this->employeeId = $id;
         $this->employeeName = $name;
         $this->moodId = $moodId;
     }

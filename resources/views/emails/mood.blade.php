@@ -1,4 +1,4 @@
-<h1>MoodStats</h1>
+<h1>EmotionStats</h1>
 
 <p> Hello {{$name}},</p>
 
