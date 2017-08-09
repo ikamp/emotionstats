@@ -1,0 +1,22 @@
+<div ng-controller="GraphController">
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-5"
+        <div fusioncharts
+             width="400"
+             height="300"
+             type="msline"
+             chart="{{attrs}}"
+             categories="{{categories}}"
+             dataset="{{dataset}}"
+        ></div>
+    </div>
+    <div class="col-sm-5">
+        <fusioncharts id="chartcontainer" chartid="chart1" width="100%" height="400" type="pie2d"
+                      dataFormat='json' ,
+                      dataSource="{{myDataSource2}}" config="{{chartoptions}}">
+        </fusioncharts>
+    </div>
+</div>
+</div>
