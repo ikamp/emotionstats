@@ -93,14 +93,15 @@ textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeh
 }
 
 button.btn {
-    height: 30px;
+    height: 50px;
     margin: 0;
     vertical-align: middle;
     border: 0;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    font-weight: 300;
-    color: #fff;
+    font-weight: 500;
+    color: #FFF;
+    background: #333;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
