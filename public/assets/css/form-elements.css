@@ -41,7 +41,6 @@ textarea.form-control {
     padding: 0 20px;
     vertical-align: middle;
     background: #fff;
-    border: 3px solid #fff;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 300;
@@ -73,7 +72,6 @@ textarea:focus,
 textarea.form-control:focus {
     outline: 0;
     background: #fff;
-    border: 3px solid #fff;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -98,12 +96,10 @@ button.btn {
     height: 30px;
     margin: 0;
     vertical-align: middle;
-    background: #19b9e7;
     border: 0;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 300;
-    color: #fff;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
@@ -135,13 +131,11 @@ button.btn:active {
 button.btn:focus {
     outline: 0;
     opacity: 0.6;
-    background: #19b9e7;
     color: #fff;
 }
 
 button.btn:active:focus, button.btn.active:focus {
     outline: 0;
     opacity: 0.6;
-    background: #19b9e7;
     color: #fff;
 }

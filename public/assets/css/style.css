@@ -445,3 +445,26 @@ body > div.container > div > div > div > div.form-bottom > form > button {
     color: #fff !important;
     font-size: 19px;
 }
+
+.emotions-container {
+    position: fixed;
+    left: 24%;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 10px;
+}
+
+.emotions-container .nav-tabs .emotion {
+    padding: 42px;
+}
+
+.emotions-container .nav-tabs {
+    border: 0;
+}
+
+.emotions-container .form-group {
+    color: #ffffff;
+}
+
+.emotions-container .btn-success {
+    background: #147d14;
+}

@@ -13,6 +13,10 @@ angular
                 templateUrl: '/mymood/mymood.html',
                 controller: 'MyMoodController'
             })
+            .when('/mood-add', {
+                templateUrl: '/mood-add/mood-add.html',
+                controller: 'MoodAddController',
+            })
             .when('/signin', {
                 templateUrl: '/signin/signin.html',
                 controller: 'SignInController',
