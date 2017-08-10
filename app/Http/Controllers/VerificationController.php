@@ -25,8 +25,9 @@ class VerificationController extends Controller
         }
     }
 
-    public function activity($token)
+    public function activity(Request $request)
     {
+        $token = $request->token;
         $userToken = UserActivationManager::getByIdWithToken(Auth::id());
         if ($userToken == $token) {
             $employee = Auth::user();
