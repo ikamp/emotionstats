@@ -7,6 +7,7 @@ use App\Manager\MoodManager;
 use App\Model\EmployeeModel;
 use App\Model\MoodModel;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -40,15 +41,16 @@ class HomeController extends Controller
 
     public function run()
     {
-        $employees = EmployeeModel::all();
+        $employee = EmployeeModel::find(1);
 
-        foreach ($employees as $employee) {
-            $mood = new MoodModel();
-            $mood->employee_id = $employee->id;
-            $mood->company_id = $employee->company_id;
-            $mood->status = false;
-            $mood->mood = 0;
-            $mood->save();
-        }
+        $mood = new MoodModel();
+        $mood->employee_id = $employee->id;
+        $mood->company_id = $employee->company_id;
+        $mood->status = false;
+        $mood->mood = 0;
+        $mood->save();
+
+        Mail::to($employee->email)->send(new \App\Mail\Mood($employee->name, $mood->id));
+
     }
 }

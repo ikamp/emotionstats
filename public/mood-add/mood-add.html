@@ -1,44 +1,44 @@
 <h1 class="page-header">Add Mood</h1>
 <div class="row hk-box-center">
     <div class="col-sm-2 col-sm-offset-1">
-        <button type="button" class="btn btn-xl"><img src="assets/img/mood/1.png"/></button>
+        <a href="" ng-click="data.mood=1"><img src="assets/img/mood/1.png"/></a>
     </div>
     <div class="col-sm-2">
-        <button type="button" class="btn btn-xl"><img src="assets/img/mood/2.png"/></button>
+        <a href="" ng-click="data.mood=1"><img src="assets/img/mood/2.png"/></a>
     </div>
     <div class="col-sm-2">
-        <button type="button" class="btn btn-xl"><img src="assets/img/mood/3.png"/></button>
+        <a href="" ng-click="data.mood=1"><img src="assets/img/mood/3.png"/></a>
     </div>
     <div class="col-sm-2">
-        <button type="button" class="btn btn-xl"><img src="assets/img/mood/4.png"/></button>
+        <a href="" ng-click="data.mood=1"> <img src="assets/img/mood/4.png"/></a>
     </div>
     <div class="col-sm-2">
-        <button type="button" class="btn btn-xl"><img src="assets/img/mood/5.png"/></button>
+        <a href="" ng-click="data.mood=1"><img src="assets/img/mood/5.png"/></a>
     </div>
 </div>
 <div class="row hk-box-center margin-150">
-    <button class="btn btn-primary"><b>FPS</b>
+    <button class="btn btn-primary" ng-click="data.description='Carrer'"><b>Carrer</b>
     </button>
-    <button class="btn btn-primary"><b>Battle</b>
+    <button class="btn btn-primary" ng-click="data.description='Holidays'"><b>Holidays</b>
     </button>
-    <button class="btn btn-primary"><span class="glyphicon glyphicon-star"></span>
-        <b>Championnat</b>
+    <button class="btn btn-primary" ng-click="data.description='Communication'"></span>
+        <b>Communication</b>
     </button>
-    <button class="btn btn-primary"><b>Football</b>
+    <button class="btn btn-primary" ng-click="data.description='Salary'"><b>Salary</b>
     </button>
-    <button class="btn btn-primary"><span class="glyphicon glyphicon-star-empty"></span>
-        <b>FIFA 2014</b>
+    <button class="btn btn-primary" ng-click="data.description='Working Time'"></span>
+        <b>Working Time</b>
     </button>
-    <button class="btn btn-primary"><b>Vidéo</b>
+    <button class="btn btn-primary" ng-click="data.description='Manager'"><b>Managers</b>
     </button>
-    <button class="btn btn-primary"><b>Arma 3</b>
+    <button class="btn btn-primary" ng-click="data.description='Health'"><b>Health</b>
     </button>
-    <button class="btn btn-primary"><b>Grid</b>
+    <button class="btn btn-primary" ng-click="data.description='Organization'"><b>Organization</b>
     </button>
 </div>
 <div class="row hk-box-center">
-    <textarea class="text" name="" id="" cols="30" rows="10"></textarea>
+    <textarea class="text" name="" id="" cols="30" rows="10" ng-model="other"></textarea>
 </div>
 <div class="row hk-box-center">
-    <button class="btn btn-default">Send</button>
+    <button class="btn btn-default" ng-click="addMood()">Send</button>
 </div>
