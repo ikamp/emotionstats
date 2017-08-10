@@ -7,6 +7,7 @@ function DashboardController($rootScope, $scope, DataService) {
     $scope.dataset = {};
     $scope.myDataSource2 = {};
     $scope.dshMoodReviews = {};
+    $scope.dataSource3 = {};
 
     $rootScope.flag = true;
     DataService.getEmployeesAverageMood(function (response) {
@@ -65,22 +66,24 @@ function DashboardController($rootScope, $scope, DataService) {
             });
             $scope.myDataSource2 = {
                 chart: {
-                    "paletteColors": "#008ee4,#6baa01,#f8bd19,#e44a00,#33bdda",
-                    "bgAlpha": "0",
-                    "borderAlpha": "20",
+                    "paletteColors": "#949FB1, #F7464A",
+                    "bgColor": "#ffffff",
+                    "showBorder": "1",
                     "use3DLighting": "0",
                     "showShadow": "0",
                     "enableSmartLabels": "0",
-                    "startingAngle": "20",
+                    "startingAngle": "310",
                     "showLabels": "0",
+                    "showPercentValues": "1",
                     "showLegend": "1",
                     "legendShadow": "0",
                     "legendBorderAlpha": "0",
-                    "enableMultiSlicing": "0",
-                    "slicingDistance": "15",
-                    "showPercentValues": "1",
-                    "showPercentInTooltip": "0",
-                    "decimals": "1"
+                    "centerLabelBold": "1",
+                    "showTooltip": "0",
+                    "decimals": "0",
+                    "captionFontSize": "14",
+                    "subcaptionFontSize": "14",
+                    "subcaptionFontBold": "0"
                 },
                 "data": []
             };
@@ -96,6 +99,7 @@ function DashboardController($rootScope, $scope, DataService) {
                     });
                 }
             });
+
         }
     )
 }

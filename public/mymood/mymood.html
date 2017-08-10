@@ -1,6 +1,6 @@
 <h1 class="page-header">My Mood</h1>
 <div class="row hk-box-center hk">
-    <div class="col-lg-4 ">
+    <div class="col-lg-3 ">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Total
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Average Mood
@@ -29,14 +29,14 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Distribution
             </div>
             <div class="panel-body" ng-controller="GraphController">
                 <p>
-                    <fusioncharts id="chartcontainer" chartid="chart1" width="100%" height="400" type="pie2d"
+                    <fusioncharts id="chartcontainer" chartid="chart1" width="405" height="405" type="pie2d"
                                   dataFormat='json' ,
                                   dataSource="{{myDataSource1}}" config="{{chartoptions}}">
                     </fusioncharts>
