@@ -4,6 +4,7 @@ angular.module('emotionStatsApp')
 function dataService($http) {
     return {
         postLoginData: postLoginData,
+        postResetPassword: postResetPassword,
         getUser: getUser,
         postRegisterData: postRegisterData,
         postPassword: postPassword,
@@ -15,7 +16,8 @@ function dataService($http) {
         postChangedDepartment: postChangedDepartment,
         postOffEmployee: postOffEmployee,
         postMood: postMood,
-        postToken: postToken
+        postToken: postToken,
+        postNewPassword: postNewPassword
     };
 
     function postToken(data, callback, errorCallback) {
@@ -26,7 +28,26 @@ function dataService($http) {
                 function (response) {
                     errorCallback && errorCallback(response)
                 });
+    }
 
+    function postNewPassword(data, callback, errorCallback) {
+        $http.post('/api/resetPassword', data)
+            .then(function (response) {
+                    callback(response.data);
+                },
+                function (response) {
+                    errorCallback && errorCallback(response)
+                });
+    }
+
+    function postResetPassword(data, callback, errorCallback) {
+        $http.post('/api/forgotPassword', data)
+            .then(function (response) {
+                    callback(response.data);
+                },
+                function (response) {
+                    errorCallback && errorCallback(response)
+                });
     }
 
     function postDepartment(data, callback) {

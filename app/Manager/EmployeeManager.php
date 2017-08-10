@@ -14,6 +14,11 @@ class EmployeeManager
         return EmployeeModel::find($id);
     }
 
+    public static function getByEmail($email)
+    {
+        return EmployeeModel::where('email', $email)->first();
+    }
+
     public static function getAllActive()
     {
         return EmployeeModel::where('status', 'active');
