@@ -38,7 +38,7 @@
             <li ng-if="!person"><a href="/#/signin">Sign in <span class="sr-only">(current)</span></a></li>
             <li ng-if="!person" class="different"><a href="/#/signup">Sign up</a></li>
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="">
                     <i class="fa fa-user fa-fw"></i> {{person.name}} <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
@@ -51,13 +51,13 @@
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
-                    <li>
+                    <li ng-if="visibility">
                         <a href="/#/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
-                    <li>
+                    <li >
                         <a href="/#/mymood"><i class="fa fa-heart fa-fw"></i> My Mood</a>
                     </li>
-                    <li>
+                    <li ng-if="visibility">
                         <a href="/#/employee"><i class="fa fa-users fa-fw"></i> Employees</a>
                     </li>
                 </ul>

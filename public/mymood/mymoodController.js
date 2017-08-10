@@ -3,6 +3,7 @@ angular.module('emotionStatsApp')
 
 function mymoodController($scope, $rootScope, DataService) {
     $rootScope.flag = true;
+    $rootScope.visibility = false;
     DataService.getMood(function (response) {
         $scope.data = response;
         $scope.sad = {
