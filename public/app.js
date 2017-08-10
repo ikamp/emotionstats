@@ -1,7 +1,8 @@
 // Define the `emotionStatsApp` module
 angular
     .module('emotionStatsApp', ['ngRoute', 'ng-fusioncharts'])
-    .config(function ($routeProvider, $locationProvider) {
+    .config(function ($routeProvider, $locationProvider, $httpProvider) {
+        $httpProvider.interceptors.push('MyHttpInterceptor');
         $locationProvider.hashPrefix('');
 
         $routeProvider
@@ -39,6 +40,16 @@ angular
             .when('/mood-add/:id', {
                 templateUrl: '/mood-add/mood-add.html',
                 controller: 'MoodAddController'
+            })
+            .when('/forgot-password', {
+                templateUrl: '/forgot-password/forgot-password.html',
+                controller: 'ForgotPasswordController',
+                publicAccess: true
+            })
+            .when('/reset-password/:token', {
+                templateUrl: '/reset-password/reset-password.html',
+                controller: 'ResetPasswordController',
+                publicAccess: true
             })
             .when('/activity/:token', {
                 templateUrl: '/activity/activity.html',

@@ -35,5 +35,7 @@ Route::resource("$apiRoute/user", 'UserController');
 Route::post($apiRoute . 'activity', 'VerificationController@activity');
 Route::get($apiRoute . 'run', 'HomeController@run');
 Route::post($apiRoute . 'create-password', 'EmployeeController@createPassword');
+Route::post($apiRoute . 'resetPassword', 'ResetPasswordController@resetPassword');
+Route::post($apiRoute . 'forgotPassword', 'ForgotPasswordController@forgotPassword');
 
 
