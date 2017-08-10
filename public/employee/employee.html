@@ -57,43 +57,49 @@
                 </tr>
             </table>
         </div>
-
         <div id="employee-add" ng-controller="EmployeeAddController" class="tab-pane fade in"
              class="tab-pane fade in active">
-            <br><br>
             <div class="row">
-                <div class="input-box col-sm-3">
+                <div class="form-group col-sm-3">
+                    <label>Employee Name</label>
                     <input type="text" name="form-username" placeholder="Name"
-                           class="form-username form-control col-sm-3" id="form-name" ng-model="newEmployee.name">
+                           class="form-control col-sm-3" id="form-name" ng-model="newEmployee.name">
                 </div>
-                <div class="input-box col-sm-3">
+                <div class="form-group col-sm-3">
+                    <label>Employee Email</label>
                     <input type="text" name="form-username" placeholder="Email"
-                           class="form-username form-control col-sm-3" id="form-email" ng-model="newEmployee.email">
+                           class="form-control col-sm-3" id="form-email" ng-model="newEmployee.email">
                 </div>
-                <div class="dropdown col-sm-2">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                        Select Department
-                        <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li ng-click="getValue(department)" value="{{department.id}}"
-                            ng-repeat="department in departments"><p>{{department.name}}</p></li>
-                    </ul>
+                <div class="form-group col-sm-3">
+                    <label>Select Department</label>
+                    <select class="form-control">
+                        <option ng-click="getValue(department)" value="{{department.id}}"
+                                ng-repeat="department in departments">{{department.name}}
+                        </option>
+                    </select>
                 </div>
-                <button class="btn btn-default col-sm-2" type="button" ng-click="addEmployee()">Invite New
-                    Employee
-                </button>
+                <div class="form-group col-sm-3">
+                    <br>
+                    <button class="btn btn-default btn-xl" type="button" ng-click="addEmployee()">Invite New
+                        Employee
+                    </button>
+                </div>
             </div>
         </div>
         <div id="department" ng-controller="DepartmentController" class="tab-pane fade in "
              class="tab-pane fade in active">
             <div class="row">
-                <br><br>
                 <div class="input-box col-sm-3">
+                    <label>Department Name</label>
                     <input type="text" name="form-username" placeholder="Name"
-                           class="form-username form-control col-sm-3" ng-model="department.departmentName"></div>
-                <button class="btn btn-default col-sm-2" type="button" ng-click="addNewDepartment()">Add New
-                    Department
-                </button>
+                           class="form-username form-control col-sm-3" ng-model="department.departmentName">
+                </div>
+                <div class="form-group col-sm-3">
+                    <br><br>
+                    <button class="btn btn-default" type="button" ng-click="addNewDepartment()">Add New
+                        Department
+                    </button>
+                </div>
             </div>
         </div>
     </div>
