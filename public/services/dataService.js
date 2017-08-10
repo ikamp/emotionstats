@@ -92,11 +92,14 @@ function dataService($http) {
             });
     }
 
-    function postLoginData(data, callback) {
+    function postLoginData(data, callback, errorCallback) {
         $http.post('/login', data)
             .then(function (response) {
                 callback(response.data);
+            }, function (response) {
+                errorCallback && errorCallback(response)
             });
+
     }
 
     function postEmployee(data, callback) {
