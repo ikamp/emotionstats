@@ -71,22 +71,24 @@ function graphController($scope, DataService) {
 
         $scope.myDataSource1 = {
             "chart": {
-                "paletteColors": "#008ee4,#6baa01,#f8bd19,#e44a00,#33bdda",
-                "bgAlpha": "0",
-                "borderAlpha": "20",
+                "paletteColors": "#949FB1, #4D5360, #46BFBD, #FDB45C, #F7464A",
+                "bgColor": "#ffffff",
+                "showBorder": "1",
                 "use3DLighting": "0",
                 "showShadow": "0",
                 "enableSmartLabels": "0",
-                "startingAngle": "20",
+                "startingAngle": "310",
                 "showLabels": "0",
+                "showPercentValues": "1",
                 "showLegend": "1",
                 "legendShadow": "0",
                 "legendBorderAlpha": "0",
-                "enableMultiSlicing": "0",
-                "slicingDistance": "15",
-                "showPercentValues": "1",
-                "showPercentInTooltip": "0",
-                "decimals": "1"
+                "centerLabelBold": "1",
+                "showTooltip": "0",
+                "decimals": "0",
+                "captionFontSize": "14",
+                "subcaptionFontSize": "14",
+                "subcaptionFontBold": "0"
             },
             data: [
                 {label: "Sad", value: $scope.sad.rate},
