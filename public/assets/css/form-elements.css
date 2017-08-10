@@ -72,7 +72,6 @@ textarea:focus,
 textarea.form-control:focus {
     outline: 0;
     background: #fff;
-    border: 3px solid #fff;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -132,13 +131,11 @@ button.btn:active {
 button.btn:focus {
     outline: 0;
     opacity: 0.6;
-    background: #19b9e7;
     color: #fff;
 }
 
 button.btn:active:focus, button.btn.active:focus {
     outline: 0;
     opacity: 0.6;
-    background: #19b9e7;
     color: #fff;
 }
