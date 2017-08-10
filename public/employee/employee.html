@@ -16,11 +16,11 @@
                 </div>
                 <div class="input-box col-sm-3">
                     <input type="text" name="form-username" placeholder="Email"
-                           class="form-username form-control col-sm-3" ng-model="search">
+                           class="form-username form-control col-sm-3" ng-model="search1">
                 </div>
                 <div class="input-box col-sm-3">
                     <input type="text" name="form-username" placeholder="Department"
-                           class="form-username form-control col-sm-3" id="form-department" ng-model="search">
+                           class="form-username form-control col-sm-3" id="form-department" ng-model="search2">
                 </div>
             </div>
             <br><br>
@@ -47,12 +47,13 @@
                     <td>
                         <span ng-if="employee.role == 'manager'" class="fa fa-star"></span>
                         <span class="fa fa-user"></span>
-                        {{employee.employeeName}}</td>
+                        {{employee.employeeName}}
+                    </td>
                     <td>{{employee.employeeEmail}}</td>
                     <td>{{employee.departmentName}}</td>
                     <td>
                         <span ng-if="employee.status == 'off'" class="fa fa-times"></span>
-                        <div class="dropdown" ng-if="employee.status != 'off'" >
+                        <div class="dropdown" ng-if="employee.status != 'off'">
                             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                                 Action
                                 <span class="caret"></span></button>
