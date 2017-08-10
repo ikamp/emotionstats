@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Manager\MoodManager;
+use App\Model\MoodReasonModel;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 class MoodController extends Controller
 {
@@ -43,17 +43,13 @@ class MoodController extends Controller
         $getMood->status = true;
         $getMood->save();
 
-        return $getMood;
-    }
+        foreach ($request->reasons as $reason) {
+            $moodReason = new MoodReasonModel();
+            $moodReason->reason = $reason;
+            $moodReason->mood_id = $getMood->id;
+            $moodReason->save();
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return $getMood;
     }
 }
