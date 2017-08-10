@@ -55,7 +55,7 @@ class EmployeeController extends Controller
             return response()->json($newEmployee);
 
         } else {
-            throw new Exception('Bu email adresi zaten kayıtlı. Lütfen başka bir email adresi deneyin.');
+            throw new Exception('This email address is already registered. Please try another email address.');
         }
 
 
@@ -77,15 +77,22 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
         $id = $request->employeeId;
+
         return EmployeeManager::setStatusById($id, EmployeeEntity::OFF);
     }
 
+    /**
+     * Change the employee's department.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function changeDepartment(Request $request)
     {
         $id = $request->employeeId;
@@ -94,6 +101,12 @@ class EmployeeController extends Controller
         return EmployeeManager::setDepartmentById($id, $department_id);
     }
 
+    /**
+     * Adding a new department to the company.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function newDepartment(Request $request)
     {
         $departmentName = $request->departmentName;
@@ -106,6 +119,12 @@ class EmployeeController extends Controller
         return $department;
     }
 
+    /**
+     * Create a new employee's password.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function createPassword(Request $request)
     {
         $employeeId = $request->employeeId;

@@ -20,11 +20,6 @@ class MoodController extends Controller
         return response()->json($mood);
     }
 
-    public function add(Request $request)
-    {
-
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -49,7 +44,7 @@ class MoodController extends Controller
             $moodReason->mood_id = $getMood->id;
             $moodReason->save();
         }
-        var_dump($getMood);
+
         return $getMood;
     }
 }

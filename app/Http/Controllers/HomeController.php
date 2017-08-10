@@ -44,18 +44,25 @@ class HomeController extends Controller
         return response()->json($mood);
     }
 
+    /**
+     * Adding moods to employees and sending mail.
+     *
+     * @return void
+     */
     public function run()
     {
-        $employee = EmployeeModel::find(251);
+        $employees = EmployeeModel::all();
 
-        $mood = new MoodModel();
-        $mood->employee_id = $employee->id;
-        $mood->company_id = $employee->company_id;
-        $mood->status = false;
-        $mood->mood = 0;
-        $mood->save();
+        foreach ($employees as $employee) {
+            $mood = new MoodModel();
+            $mood->employee_id = $employee->id;
+            $mood->company_id = $employee->company_id;
+            $mood->status = false;
+            $mood->mood = 0;
+            $mood->save();
 
-        Mail::to($employee->email)->send(new \App\Mail\Mood($employee->name, $mood->id));
+            Mail::to($employee->email)->send(new \App\Mail\Mood($employee->name, $mood->id));
 
+        }
     }
 }

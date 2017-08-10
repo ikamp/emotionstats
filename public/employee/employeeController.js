@@ -30,8 +30,7 @@ function employeeController($scope, $rootScope, $location, DataService) {
 
 
     DataService.getEmployee(function (response) {
-        if(response.employees.role == "manager")
-        {
+        if (response.employees.role == "manager") {
             $scope.role = "manager";
         }
 

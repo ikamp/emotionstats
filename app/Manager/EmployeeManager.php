@@ -132,18 +132,6 @@ class EmployeeManager
         $employeeEntity->setStatus($employee->status);
         $employeeEntity->setRole($employee->role);
 
-        if (!isset($employee->department->name)) {
-            $employeeEntity->setDepartmentName(DepartmentManager::getById($employeeEntity->getDepartmentId())->name);
-        } else {
-            $employeeEntity->setDepartmentName($employee->department->name);
-        }
-
-        if (!isset($employee->company->name)) {
-            $employeeEntity->setCompanyName(CompanyManager::getById($employeeEntity->getCompanyId())->name);
-        } else {
-            $employeeEntity->setCompanyName($employee->company->name);
-        }
-
         return $employeeEntity;
     }
 }
