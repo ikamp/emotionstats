@@ -1,8 +1,7 @@
 // Define the `emotionStatsApp` module
 angular
     .module('emotionStatsApp', ['ngRoute', 'ng-fusioncharts'])
-    .config(function ($routeProvider, $locationProvider, $httpProvider) {
-        $httpProvider.interceptors.push('MyHttpInterceptor');
+    .config(function ($routeProvider, $locationProvider) {
         $locationProvider.hashPrefix('');
 
         $routeProvider
