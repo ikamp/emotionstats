@@ -1,4 +1,10 @@
 <div class="col-sm-7 col-sm-offset-2">
+    <div class="alert alert-warning" alert-dismissable ng-if="match">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Warning!</strong> Your transaction could not be completed because your data do not match our records.
+
+        <p>Please check your information again!</p>
+    </div>
     <div class="form-box">
         <div class="form-top">
             <div class="form-top-left">
