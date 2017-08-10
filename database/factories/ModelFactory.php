@@ -55,7 +55,7 @@ $factory->define(App\Model\MoodModel::class, function (Faker\Generator $faker) {
 $factory->define(App\Model\MoodReasonModel::class, function (Faker\Generator $faker) {
 
     return [
-        'reason' => str_random(10),
+        'reason' => $faker->numberBetween(0, 15),
         'mood_id' => $faker->numberBetween(1, 100)
     ];
 });

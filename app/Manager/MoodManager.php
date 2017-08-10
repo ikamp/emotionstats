@@ -2,6 +2,7 @@
 
 namespace App\Manager;
 
+use App\Entity\MoodReasonEntity;
 use App\Model\MoodModel;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -23,11 +24,10 @@ class MoodManager
         return self::moodCalculate($moods);
     }
 
-    public static function getMoodReviewByCompanyId($startDate, $endDate)
+    public static function getMoodReviewByCompanyId($companyId, $startDate, $endDate)
     {
-        $authCompanyId = Auth::user()->company_id;
-        $getCompanyEmployees = EmployeeManager::getAllEmployeeByCompanyId($authCompanyId);
-        $getCompanyMood = MoodModel::where('company_id', $authCompanyId)
+        $getCompanyEmployees = EmployeeManager::getAllEmployeeByCompanyId($companyId);
+        $getCompanyMood = MoodModel::where('company_id', $companyId)
             ->where('created_at', '>', $startDate)
             ->where('created_at', '<', $endDate)
             ->where('status', true)
@@ -41,10 +41,9 @@ class MoodManager
         return $mood;
     }
 
-    public static function getWeekAverageMoodByCompanyId($startDate, $endDate)
+    public static function getWeekAverageMoodByCompanyId($companyId, $startDate, $endDate)
     {
-        $authCompanyId = Auth::user()->company_id;
-        $getCompanyWeekMood = MoodModel::where('company_id', $authCompanyId)
+        $getCompanyWeekMood = MoodModel::where('company_id', $companyId)
             ->where('created_at', '>', $startDate)
             ->where('created_at', '<', $endDate)
             ->where('status', true)
@@ -93,5 +92,32 @@ class MoodManager
         }
 
         return $mood;
+    }
+
+    public static function getTopReasonByCompanyId($companyId)
+    {
+        $moods = MoodModel::with('moodreason')
+            ->where('company_id', $companyId)
+            ->get()
+            ->groupBy('mood');
+
+        $list = [];
+        $i = 1;
+        foreach ($moods as $mood) {
+            foreach ($mood as $item) {
+                foreach ($item->moodreason as $reason) {
+                    if (isset($list[$i][$reason->reason]['count'])) {
+                        $list[$i][$reason->reason]['count']++;
+                    } else {
+                        $list[$i][$reason->reason]['count'] = 0;
+                    }
+                }
+            }
+            $i++;
+        }
+
+        arsort($list);
+
+        return $list;
     }
 }

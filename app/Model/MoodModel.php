@@ -9,11 +9,18 @@ class MoodModel extends BaseModel
 
     public function employee()
     {
-        $this->belongsTo('App\Model\EmployeeModel', 'employee_id', 'id');
+        return $this->belongsTo('App\Model\EmployeeModel', 'id', 'employee_id');
     }
 
     public function company()
     {
-        $this->hasOne('App\Model\CompanyModel', 'company_id', 'id');
+        return $this->hasOne('App\Model\CompanyModel', 'id', 'company_id');
+    }
+
+    public function moodreason()
+    {
+        return $this->hasMany('App\Model\MoodReasonModel', 'mood_id', 'id');
     }
 }
+
+
