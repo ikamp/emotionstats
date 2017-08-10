@@ -7,6 +7,23 @@ class MoodReasonEntity
     protected $id;
     protected $moodId;
     protected $reason;
+    protected $reasons = [
+        'Career',
+        'Colleagues',
+        'Communication',
+        'Health',
+        'Holidays',
+        'Managers',
+        'Organization',
+        'Professional',
+        'Salary',
+        'Task area/Activity',
+        'Work equipment',
+        'Working time',
+        'Workload',
+        'Work environment',
+        'Others'
+    ];
 
     /**
      * @return mixed
@@ -54,5 +71,22 @@ class MoodReasonEntity
     public function setReason($reason)
     {
         $this->reason = $reason;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReasons()
+    {
+        return $this->reasons;
+    }
+
+    /**
+     * @param $index
+     * @return string
+     */
+    public function getReasonsByIndex($index)
+    {
+        return $this->reasons[$index];
     }
 }

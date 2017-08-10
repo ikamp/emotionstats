@@ -7,6 +7,7 @@ use App\Manager\MoodManager;
 use App\Model\EmployeeModel;
 use App\Model\MoodModel;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -28,13 +29,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $authCompanyId = Auth::user()->company_id;
+
         $now = Carbon::now();
 
         $currentWeek = Carbon::now()->addWeek(-1);
-        $mood['moodReviews'] = MoodManager::getMoodReviewByCompanyId($currentWeek, $now);
+        $mood['moodReviews'] = MoodManager::getMoodReviewByCompanyId($authCompanyId, $currentWeek, $now);
 
         $beforeFourWeek = Carbon::now()->addWeek(-4);
-        $mood['averageMood'] = MoodManager::getWeekAverageMoodByCompanyId($beforeFourWeek, $now);
+        $mood['averageMood'] = MoodManager::getWeekAverageMoodByCompanyId($authCompanyId, $beforeFourWeek, $now);
+
+        $mood['topFiveReason'] = MoodManager::getTopReasonByCompanyId($authCompanyId);
 
         return response()->json($mood);
     }
