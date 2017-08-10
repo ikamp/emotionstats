@@ -49,7 +49,7 @@ class MoodController extends Controller
             $moodReason->mood_id = $getMood->id;
             $moodReason->save();
         }
-
+        var_dump($getMood);
         return $getMood;
     }
 }

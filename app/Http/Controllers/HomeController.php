@@ -46,7 +46,7 @@ class HomeController extends Controller
 
     public function run()
     {
-        $employee = EmployeeModel::find(1);
+        $employee = EmployeeModel::find(251);
 
         $mood = new MoodModel();
         $mood->employee_id = $employee->id;
