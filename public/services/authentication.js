@@ -17,6 +17,9 @@ function authentication($http, $rootScope, $location) {
                 }
                 else {
                     $rootScope.person = response.data;
+                    if ($rootScope.person.role == "manager") {
+                        $rootScope.visibility = true;
+                    }
                 }
             });
     }
