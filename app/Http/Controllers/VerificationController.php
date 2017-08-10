@@ -7,26 +7,25 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Manager\UserActivationManager;
 use Illuminate\Support\Facades\Mail;
+use Mockery\Exception;
 
 class VerificationController extends Controller
 {
-    public function newToken()
+    public function activity(Request $request)
     {
         $now = Carbon::now();
         $userToken = UserActivationManager::getById(Auth::id());
-        if (Auth::user()->status != "active") {
-            if ($userToken->expiration_date < $now) {
-                $userToken->token = str_random('32');
-                $userToken->expiration_date = Carbon::now()->addHours(1);
-                $userToken->save();
 
-                Mail::to(Auth::user()->email)->send(new \App\Mail\verification(Auth::user()->id));
-            }
+        if ($userToken->expiration_date < $now) {
+            $userToken->token = str_random('32');
+            $userToken->expiration_date = Carbon::now()->addHours(1);
+            $userToken->save();
+
+            Mail::to(Auth::user()->email)->send(new \App\Mail\verification(Auth::user()->id));
+
+            throw new Exception("Token is expired.");
         }
-    }
 
-    public function activity(Request $request)
-    {
         $token = $request->token;
         $userToken = UserActivationManager::getByIdWithToken(Auth::id());
         if ($userToken == $token) {
@@ -34,6 +33,8 @@ class VerificationController extends Controller
             $employee->status = "active";
             $employee->save();
             return redirect('/#/mymood');
+        } else {
+            throw new Exception("Tokens are not matching each other");
         }
     }
 
