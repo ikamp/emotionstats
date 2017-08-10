@@ -11,7 +11,6 @@ function activityController($rootScope, $routeParams, $scope, $location, DataSer
         $location.path("/mymood");
     },function () {
         $scope.match = true;
-        DataService.sendNewToken();
     })
 
 }

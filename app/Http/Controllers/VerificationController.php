@@ -11,27 +11,21 @@ use Mockery\Exception;
 
 class VerificationController extends Controller
 {
-    public function newToken()
+    public function activity(Request $request)
     {
         $now = Carbon::now();
         $userToken = UserActivationManager::getById(Auth::id());
-        if (Auth::user()->status != "active") {
-            if ($userToken->expiration_date->lt( $now)) {
-                $userToken->token = str_random('32');
-                $userToken->expiration_date = Carbon::now()->addHours(1);
-                $userToken->save();
 
-                Mail::to(Auth::user()->email)->send(new \App\Mail\verification(Auth::user()->id));
-            }else{
-                throw new Exception("Token is not expired.");
-            }
-        }else{
-            throw new Exception("User is active");
+        if ($userToken->expiration_date < $now) {
+            $userToken->token = str_random('32');
+            $userToken->expiration_date = Carbon::now()->addHours(1);
+            $userToken->save();
+
+            Mail::to(Auth::user()->email)->send(new \App\Mail\verification(Auth::user()->id));
+
+            throw new Exception("Token is expired.");
         }
-    }
 
-    public function activity(Request $request)
-    {
         $token = $request->token;
         $userToken = UserActivationManager::getByIdWithToken(Auth::id());
         if ($userToken == $token) {

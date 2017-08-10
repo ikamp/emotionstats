@@ -15,22 +15,8 @@ function dataService($http) {
         postChangedDepartment: postChangedDepartment,
         postOffEmployee: postOffEmployee,
         postMood: postMood,
-        postToken: postToken,
-        sendNewToken: sendNewToken
-
-
+        postToken: postToken
     };
-
-    function sendNewToken(data, callback, errorCallback) {
-        $http.post('/api/newToken', data)
-            .then(function (response) {
-                    callback(response.data);
-                },
-                function (response) {
-                    errorCallback && errorCallback(response)
-                });
-
-    }
 
     function postToken(data, callback, errorCallback) {
         $http.post('/api/activity', data)
