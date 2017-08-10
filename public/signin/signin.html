@@ -1,30 +1,29 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8 col-md-offset-8">
-            <div class="form-box">
-                <div class="form-top">
-                    <div class="form-top-left">
-                        <h3>Login to our site</h3>
-                        <p>Enter username and password to log on:</p>
-                    </div>
-                    <div class="form-top-right">
-                        <i class="fa fa-lock"></i>
-                    </div>
-                </div>
-                <div class="form-bottom">
-                    <form class="login-form">
-                        <div class="form-group">
-                            <label class="sr-only" form="form-username">Email</label>
-                            <input type="text" name="form-username" placeholder="Email" class="form-username form-control" id="form-username" ng-model="user.email">
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" form="form-password">Password</label>
-                            <input type="password" name="form-password" placeholder="Password" class="form-password form-control" id="form-password" ng-model="user.password">
-                        </div>
-                        <button class="btn" ng-click="login()">Login!</button>
-                    </form>
-                </div>
+<div class="col-sm-7 col-sm-offset-2">
+    <div class="form-box">
+        <div class="form-top">
+            <div class="form-top-left">
+                <h3>Login to our site</h3>
+                <p>Enter username and password to log on:</p>
             </div>
+            <div class="form-top-right">
+                <i class="fa fa-lock"></i>
+            </div>
+        </div>
+        <div class="form-bottom">
+            <form class="login-form">
+                <div class="form-group">
+                    <label class="sr-only" form="form-username">Email</label>
+                    <input type="text" name="form-username" placeholder="Email" class="form-username form-control"
+                           id="form-username" ng-model="user.email">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" form="form-password">Password</label>
+                    <input type="password" name="form-password" placeholder="Password"
+                           class="form-password form-control" id="form-password" ng-model="user.password">
+                </div>
+                <button class="btn" ng-click="login()">Login!</button>
+            </form>
         </div>
     </div>
 </div>
+<div class="col-sm-3"></div>
