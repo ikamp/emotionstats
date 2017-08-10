@@ -140,3 +140,13 @@ button.btn:active:focus, button.btn.active:focus {
     opacity: 0.6;
     color: #fff;
 }
+
+.hk .panel-primary>.panel-heading {
+    background: #555;
+    border-color: #555;
+}
+
+.hk .panel-primary {
+    border-color: #555;
+}
+
