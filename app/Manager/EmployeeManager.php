@@ -65,11 +65,11 @@ class EmployeeManager
         $employeeInfo = EmployeeModel::with('company', 'department', 'moods')->find($id);
 
         if (!$employeeInfo instanceof EmployeeModel) {
-            throw new Exception('İstenilen çalışan kaydına ulaşılamadı.');
+            throw new Exception('The requested employee record could not be reached.');
         }
 
         if ($employeeInfo->company_id != Auth::user()->company_id) {
-            throw new Exception('Bu çalışan bilgilerini görüntülemeye yetkiniz yok.');
+            throw new Exception('You are not able to view this employee information.');
         }
 
         $mapEmployeeInfo = self::mapEmployee($employeeInfo);
