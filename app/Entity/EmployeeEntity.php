@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use App\Manager\CompanyManager;
+use App\Manager\DepartmentManager;
+
 class EmployeeEntity
 {
     const WAITING = 'waiting';
@@ -156,6 +159,10 @@ class EmployeeEntity
      */
     public function getCompanyName()
     {
+        if (!isset($this->companyName)) {
+            $this->setCompanyName(CompanyManager::getById($this->companyId)->name);
+        }
+
         return $this->companyName;
     }
 
@@ -172,6 +179,10 @@ class EmployeeEntity
      */
     public function getDepartmentName()
     {
+        if (!isset($this->departmentName)) {
+            $this->departmentName = DepartmentManager::getById($this->departmentId)->name;
+        }
+
         return $this->departmentName;
     }
 

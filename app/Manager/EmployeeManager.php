@@ -65,11 +65,11 @@ class EmployeeManager
         $employeeInfo = EmployeeModel::with('company', 'department', 'moods')->find($id);
 
         if (!$employeeInfo instanceof EmployeeModel) {
-            throw new Exception('İstenilen çalışan kaydına ulaşılamadı.');
+            throw new Exception('The requested employee record could not be reached.');
         }
 
         if ($employeeInfo->company_id != Auth::user()->company_id) {
-            throw new Exception('Bu çalışan bilgilerini görüntülemeye yetkiniz yok.');
+            throw new Exception('You are not able to view this employee information.');
         }
 
         $mapEmployeeInfo = self::mapEmployee($employeeInfo);
@@ -131,18 +131,6 @@ class EmployeeManager
         $employeeEntity->setCompanyId($employee->company_id);
         $employeeEntity->setStatus($employee->status);
         $employeeEntity->setRole($employee->role);
-
-        if (!isset($employee->department->name)) {
-            $employeeEntity->setDepartmentName(DepartmentManager::getById($employeeEntity->getDepartmentId())->name);
-        } else {
-            $employeeEntity->setDepartmentName($employee->department->name);
-        }
-
-        if (!isset($employee->company->name)) {
-            $employeeEntity->setCompanyName(CompanyManager::getById($employeeEntity->getCompanyId())->name);
-        } else {
-            $employeeEntity->setCompanyName($employee->company->name);
-        }
 
         return $employeeEntity;
     }
